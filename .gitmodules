@@ -1,0 +1,4 @@
+[submodule "ext/sv-tests"]
+    path = ext/sv-tests
+    url = https://github.com/chipsalliance/sv-tests.git
+    shallow = true
