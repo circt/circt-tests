@@ -6,4 +6,4 @@ make clean
 make -j generate-tests
 make -j tests
 make report
-"$(dirname "${BASH_SOURCE[0]}")/stats.sh"
+../../verilog/sv-tests/stats.sh
