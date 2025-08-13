@@ -11,8 +11,8 @@ grep -rl "submit a bug report" out/logs \
 
 # Collect the runs that had error or warning messages in tests that are not
 # expected to fail.
-grep -ErlZ " (error|warning): " out/logs \
-| xargs -0 grep -L "should_fail: 1" \
+grep -Erl " (error|warning): " out/logs \
+| xargs grep -L "should_fail: 1" \
 | sort -u > out/runs_diagnostics.txt
 
 # Create a ranking of the most common error messages.
