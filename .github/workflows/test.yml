@@ -1,0 +1,61 @@
+name: Test
+
+on:
+  # Run on pushes to the main branch
+  push:
+    branches:
+      - main
+  # Run on pull requests
+  pull_request:
+    types: [opened, synchronize, reopened]
+  # Run regularly at 12:00 UTC
+  schedule:
+    - cron: "0 12 * * *"
+
+jobs:
+  run-tests:
+    name: Run Tests
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/circt/images/circt-ci-build:20250515145637
+    steps:
+
+      # Checkout the repository.
+      - name: Checkout repository
+        uses: actions/checkout@v5
+      - name: Set git safe directory
+        run: git config --global --add safe.directory $PWD
+
+      # Checkout CIRCT.
+      - name: Checkout CIRCT
+        uses: actions/checkout@v5
+        with:
+          repository: llvm/circt
+          fetch-depth: 1
+          submodules: recursive
+          path: circt
+
+      # Setup ccache to speed up builds.
+      - name: Setup ccache
+        uses: hendrikmuhs/ccache-action@v1.2
+
+      # Configure CIRCT.
+      - name: Configure CIRCT
+        run: |
+          export PATH="/usr/lib/ccache:/usr/local/opt/ccache/libexec:$PATH"
+          cmake -G Ninja circt/llvm/llvm -B circt/build \
+            -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+            -DCMAKE_C_COMPILER=clang \
+            -DCMAKE_CXX_COMPILER=clang++ \
+            -DLLVM_ENABLE_ASSERTIONS=ON \
+            -DLLVM_TARGETS_TO_BUILD=host \
+            -DLLVM_ENABLE_PROJECTS=mlir \
+            -DLLVM_EXTERNAL_PROJECTS=circt \
+            -DLLVM_EXTERNAL_CIRCT_SOURCE_DIR=$PWD/circt \
+            -DCIRCT_SLANG_FRONTEND_ENABLED=ON
+
+      # Build and test CIRCT.
+      - name: Build and Test CIRCT
+        run: |
+          ninja -C circt/build check-circt
+          echo "$PWD/circt/build/bin" >> "$GITHUB_PATH"
