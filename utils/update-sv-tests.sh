@@ -5,3 +5,5 @@ git submodule update --depth=1 --init ext/sv-tests
 cd ext/sv-tests
 git submodule update --depth=1 --init --recursive third_party/cores
 git submodule update --depth=1 --init --recursive third_party/tests
+git submodule update --depth=1 --init --recursive third_party/tools/icarus
+git submodule update --depth=1 --init --recursive third_party/tools/yosys
