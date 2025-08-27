@@ -14,27 +14,44 @@ Use the provided scripts to only grab the submodules that are necessary.
 utils/update-all.sh
 
 # Verilog frontend tests
+verilog/snitch/compile.sh
 verilog/sv-tests/install-deps.sh
 verilog/sv-tests/run.sh
 ```
 
 ## Repository Structure
 
+- **cores**: Sources for processor cores and other hardware designs that we keep in this repository for simplicity.
+  (All other cores are submodules in _ext_.)
 - **ext**: Contains all git submodules used by the test suite.
   These can be external test suites, tests, tools, sources, and more.
 - **utils**: Utilities to work with the test suite.
   Contains useful scripts to update only the necessary submodules, among other things.
 - **verilog**: Tests for the Verilog frontend of CIRCT.
 
+## Cores
+
+### Snitch
+
+The `cores/snitch` directory contains the source code for the [Snitch] RISC-V core.
+This is an amalgamated single-file version of the source code that was used as a benchmark for the [LLHD] paper.
+
+[LLHD]: https://arxiv.org/pdf/2004.03494
+[Snitch]: https://github.com/pulp-platform/snitch_cluster
+
 ## Verilog
+
+### Snitch
+
+The `verilog/snitch/compile.sh` script compiles the Snitch core to the CIRCT core dialects.
 
 ### sv-tests
 
-The `verilog/sv-tests` directory contains scripts to run the [sv-tests](https://github.com/chipsalliance/sv-tests) suite through circt-verilog.
+The `verilog/sv-tests` directory contains scripts to run the [sv-tests] suite through circt-verilog.
 Run the `verilog/sv-tests/install-deps.sh` script once on your machine to install the commonly-needed Python and Perl dependencies.
 Then use `verilog/sv-tests/run.sh` to run the entire test suite and generate the following interesting files:
 
-- `ext/sv-tests/out/report/index.html` contains an HTML report of all tests, similar to [sv-tests-results](https://chipsalliance.github.io/sv-tests-results/).
+- `ext/sv-tests/out/report/index.html` contains an HTML report of all tests, similar to [sv-tests-results].
 - `ext/sv-tests/out/runs_segfault.txt` contains a list of runs that crashed circt-verilog with a stack trace.
 - `ext/sv-tests/out/runs_diagnostics.txt` contains a list of runs that produced errors or warnings.
 - `ext/sv-tests/out/errors.txt` contains a list of all errors, ranked from most to least common.
@@ -49,3 +66,6 @@ We're not there yet.
 
 The most critical issues to fix are the `runs_segfault.txt`.
 We definitely do not want to have circt-verilog crash on user input.
+
+[sv-tests]: https://github.com/chipsalliance/sv-tests
+[sv-tests-results]: https://chipsalliance.github.io/sv-tests-results/
