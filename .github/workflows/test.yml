@@ -62,3 +62,8 @@ jobs:
         run: |
           ninja -C circt/build circt-verilog
           echo "$PWD/circt/build/bin" >> "$GITHUB_PATH"
+
+      # Run individual tests.
+      - name: Compile Snitch
+        continue-on-error: true
+        run: verilog/snitch/compile.sh
