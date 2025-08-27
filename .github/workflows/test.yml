@@ -35,6 +35,13 @@ jobs:
           submodules: recursive
           path: circt
 
+      # Install dependencies.
+      - name: Install dependencies
+        run: |
+          apt-get update -qq
+          apt install -y cpanminus
+          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+
       # Setup ccache to speed up builds.
       - name: Setup ccache
         uses: hendrikmuhs/ccache-action@v1.2
@@ -63,7 +70,19 @@ jobs:
           ninja -C circt/build circt-verilog
           echo "$PWD/circt/build/bin" >> "$GITHUB_PATH"
 
+      # Fetch all submodules needed to run the tests.
+      - name: Update submodules for tests
+        run: utils/update-all.sh
+
       # Run individual tests.
       - name: Compile Snitch
-        continue-on-error: true
         run: verilog/snitch/compile.sh
+
+      - name: Run sv-tests
+        run: |
+          verilog/sv-tests/install-deps.sh
+          verilog/sv-tests/run.sh
+
+      # Display some results.
+      - name: Results for sv-tests
+        run: cat ext/sv-tests/out/errors.txt
