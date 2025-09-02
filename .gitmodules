@@ -2,3 +2,11 @@
     path = ext/sv-tests
     url = https://github.com/chipsalliance/sv-tests.git
     shallow = true
+[submodule "ext/benchmarks"]
+	path = ext/epfl-benchmarks
+	url = https://github.com/lsils/benchmarks.git
+    shallow = true
+[submodule "ext/DatapathBench"]
+	path = ext/DatapathBench
+	url = https://github.com/cowardsa/DatapathBench
+    shallow = true

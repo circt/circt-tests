@@ -67,7 +67,7 @@ jobs:
       # Build and test CIRCT.
       - name: Build and Test CIRCT
         run: |
-          ninja -C circt/build circt-verilog
+          ninja -C circt/build circt-verilog circt-synth
           echo "$PWD/circt/build/bin" >> "$GITHUB_PATH"
 
       # Fetch all submodules needed to run the tests.
