@@ -29,6 +29,13 @@ verilog/sv-tests/run.sh
   Contains useful scripts to update only the necessary submodules, among other things.
 - **verilog**: Tests for the Verilog frontend of CIRCT.
 
+The following temporary directories are created while running builds and tests:
+
+- **build**: Build artifacts such as compiled cores.
+- **results**: Test results that should be archived and tracked.
+  These can be statistics about failing tests, diagnostics, or performance numbers.
+  CI will push the contents of this directory to the `results` branch.
+
 ## Cores
 
 ### Snitch
