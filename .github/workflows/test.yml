@@ -31,7 +31,6 @@ jobs:
         uses: actions/checkout@v5
         with:
           repository: llvm/circt
-          fetch-depth: 1
           submodules: recursive
           path: circt
 
@@ -70,9 +69,12 @@ jobs:
           ninja -C circt/build circt-verilog
           echo "$PWD/circt/build/bin" >> "$GITHUB_PATH"
 
-      # Fetch all submodules needed to run the tests.
-      - name: Update submodules for tests
-        run: utils/update-all.sh
+      # Fetch all submodules needed to run the tests. Also clear any temporary
+      # directories that happen to already exist.
+      - name: Prepare for tests
+        run: |
+          utils/update-all.sh
+          rm -rf build results
 
       # Run individual tests.
       - name: Compile Snitch
@@ -85,4 +87,47 @@ jobs:
 
       # Display some results.
       - name: Results for sv-tests
-        run: cat ext/sv-tests/out/errors.txt
+        run: cat results/sv-tests/errors.txt
+
+      # Upload the results as an artifact.
+      - name: Upload results artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: results
+          compression-level: 9
+          path: results
+
+      # Archive the `results` directory on the `results` branch.
+      - name: Checkout results branch
+        uses: actions/checkout@v5
+        with:
+          ref: results
+          path: results-branch
+
+      - name: Archive results
+        run: |
+          # Copy the results to the target location.
+          COMMIT=$(git -C circt rev-parse --short HEAD)
+          TARGET="$(date -u +%Y/%Y-%m-%d-%H%M%S)-$COMMIT"
+          mkdir -p results-branch/$(dirname $TARGET)
+          cp -rv results results-branch/$TARGET
+
+          # Commit the new results.
+          cd results-branch
+          git config --local \
+            user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local \
+            user.name "github-actions[bot]"
+          git add .
+          git commit -m "Results for $COMMIT"
+
+          # Push the results. If the push fails, assume that it's because some
+          # other job happened to push in the meantime.
+          RETRY=0
+          while ! git push; do
+            if (( ++RETRY == 10 )); then
+              echo "Giving up after $RETRY failed attempts to push results" &>2
+              exit 1
+            fi
+            git pull --rebase
+          done
