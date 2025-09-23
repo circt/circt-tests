@@ -11,6 +11,9 @@ on:
   # Run regularly at 12:00 UTC
   schedule:
     - cron: "0 12 * * *"
+  # Run when triggered remotely from CIRCT
+  repository_dispatch:
+    types: [circt-main, circt-pr]
 
 jobs:
   run-tests:
@@ -19,6 +22,23 @@ jobs:
     container:
       image: ghcr.io/circt/images/circt-ci-build:20250515145637
     steps:
+
+      # Determine what triggered this build and under which category the results
+      # should be archived.
+      - name: Determine trigger
+        id: trigger
+        shell: bash
+        run: |
+          if [[ \
+            "${{ github.event_name }}" == "repository_dispatch" && \
+            "${{ github.event.action }}" == "circt-pr" \
+          ]]; then
+            echo "kind=pr"
+            echo "ref=${{ github.event.client_payload.ref }}"
+          else
+            echo "kind=main"
+            echo "ref=main"
+          fi >> $GITHUB_OUTPUT
 
       # Checkout the repository.
       - name: Checkout repository
@@ -31,6 +51,7 @@ jobs:
         uses: actions/checkout@v5
         with:
           repository: llvm/circt
+          ref: ${{ steps.trigger.outputs.ref }}
           submodules: recursive
           path: circt
 
@@ -108,7 +129,8 @@ jobs:
         run: |
           # Copy the results to the target location.
           COMMIT=$(git -C circt rev-parse --short HEAD)
-          TARGET="$(date -u +%Y/%Y-%m-%d-%H%M%S)-$COMMIT"
+          KIND="${{ steps.trigger.outputs.kind }}"
+          TARGET="$(date -u +%Y/%Y-%m-%d-%H%M%S)-$KIND-$COMMIT"
           mkdir -p results-branch/$(dirname $TARGET)
           cp -rv results results-branch/$TARGET
 
