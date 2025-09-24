@@ -27,14 +27,22 @@ jobs:
       # should be archived.
       - name: Determine trigger
         id: trigger
-        shell: bash
         run: |
-          if [[ \
-            "${{ github.event_name }}" == "repository_dispatch" && \
-            "${{ github.event.action }}" == "circt-pr" \
-          ]]; then
-            echo "kind=pr"
-            echo "ref=${{ github.event.client_payload.ref }}"
+          if [ "${{ github.event_name }}" = "repository_dispatch" ]; then
+            # Determine whether this is a main branch or PR build.
+            if [ "${{ github.event.action }}" = "circt-pr" ]; then
+              echo "kind=pr"
+            else
+              echo "kind=main"
+            fi
+
+            # Set the ref to the explicit SHA, since main or PR branches may
+            # change while this is going on.
+            if [ -z "${{ github.event.client_payload.sha }}" ]; then
+              echo "Dispatch event did not specify commit SHA" >&2
+              exit 1
+            fi
+            echo "ref=${{ github.event.client_payload.sha }}"
           else
             echo "kind=main"
             echo "ref=main"
