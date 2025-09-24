@@ -12,8 +12,10 @@ on:
   schedule:
     - cron: "0 12 * * *"
   # Run when triggered remotely from CIRCT
-  repository_dispatch:
-    types: [circt-main, circt-pr]
+  workflow_dispatch:
+    inputs:
+      kind: { type: choice, options: [main, pr], required: true }
+      sha:  { type: string, required: true }
 
 jobs:
   run-tests:
@@ -28,21 +30,9 @@ jobs:
       - name: Determine trigger
         id: trigger
         run: |
-          if [ "${{ github.event_name }}" = "repository_dispatch" ]; then
-            # Determine whether this is a main branch or PR build.
-            if [ "${{ github.event.action }}" = "circt-pr" ]; then
-              echo "kind=pr"
-            else
-              echo "kind=main"
-            fi
-
-            # Set the ref to the explicit SHA, since main or PR branches may
-            # change while this is going on.
-            if [ -z "${{ github.event.client_payload.sha }}" ]; then
-              echo "Dispatch event did not specify commit SHA" >&2
-              exit 1
-            fi
-            echo "ref=${{ github.event.client_payload.sha }}"
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "kind=${{ inputs.kind }}"
+            echo "ref=${{ inputs.sha }}"
           else
             echo "kind=main"
             echo "ref=main"
