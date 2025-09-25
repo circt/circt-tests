@@ -1,0 +1,256 @@
+    164 error: unsupported construct: ClassType
+    119 error: unsupported type: CHandleType
+    100 error: unsupported module member: PrimitiveInstance
+     90 error: expression of type '!moore.f64' cannot be cast to a simple bit vector
+     72 error: unsupported module member: ClassType
+     47 error: delayed assignments not supported
+     45 error: 'moore.read' op using value defined outside the region
+     44 error: unsupported definition: program
+     40 error: unsupported statement: ProceduralAssign
+     37 error: failed to legalize operation 'moore.variable'
+     35 error: unsupported module member: InstanceArray
+     30 error: unsupported construct: Variable
+     29 error: unsupported type: EventType
+     29 error: unknown module 'fpu_cnt_lead0_lvl1'
+     26 error: unsupported construct: Primitive
+     25 error: unsupported statement: Disable
+     25 error: delayed continuous assignments not supported
+     24 error: failed to legalize operation 'moore.builtin.time'
+     22 error: unsupported module member: ClockingBlock
+     22 error: unsupported expression: NewArray
+     22 error: unsupported construct: GenericClassDef
+     21 error: unsupported system call `size`
+     20 error: unsupported package member: Variable
+     20 error: failed to legalize operation 'moore.conversion'
+     19 error: 'moore.blocking_assign' op using value defined outside the region
+     18 error: unsupported module member: SpecifyBlock
+     18 error: unknown module 'fpu_denorm_3b'
+     17 error: unsupported package member: ClassType
+     17 error: unknown module 'fpu_in2_gt_in1_3b'
+     16 error: top-level module 'dut' has unconnected interface port 'in'
+     15 error: failed to legalize operation 'moore.net'
+     15 error: failed to legalize operation 'moore.builtin.random'
+     15 error: expression of type '!moore.string' cannot be cast to a simple bit vector
+     13 error: unsupported statement: Wait
+     13 error: unsupported format specifier `%m`
+     13 error: unsupported assignment pattern with type '!moore.open_uarray<i32>'
+     12 error: unsupported statement: RandSequence
+     12 error: unsupported construct: Checker
+     12 error: integer bitwidth is limited to 16777215 bits
+     12 error: failed to legalize operation 'moore.real_constant'
+     11 error: top-level module 'memMod' has unconnected interface port 'a'
+     10 error: unknown module 'fpu_cnt_lead0_lvl2'
+      9 error: redefinition of 'a'
+      8 error: unsupported type: ClassType
+      8 error: failed to legalize operation 'moore.fstring_to_string'
+      8 error: 'llhd.sig.extract' op failed to verify that width of result type has to be smaller than or equal to the input type
+      7 error: unsupported system call `$itor`
+      7 error: unsupported system call `$fopen`
+      7 error: redefinition of 'b'
+      7 error: duplicate definition of 'top' [-Wduplicate-definition]
+      6 error: unsupported system call `next`
+      6 error: unsupported system call `len`
+      6 error: failed to legalize operation 'moore.fmt.int'
+      5 error: unsupported system call `prev`
+      5 error: unsupported system call `$dumpfile`
+      5 error: unsupported format specifier `%c`
+      5 error: unsupported expression: element select into byte$[]
+      5 error: unsupported expression: TaggedUnion
+      5 error: too many errors emitted, stopping now [--error-limit=]
+      4 error: unsupported package member: GenericClassDef
+      4 error: unsupported module member: GenericClassDef
+      4 error: unsupported expression: element select into string
+      4 error: unsupported expression: element select into int$[string]
+      4 error: unsupported expression: DisableIff
+      4 error: unknown hierarchical name `x`
+      4 error: failed to legalize operation 'moore.concat_ref'
+      4 error: counter overflow at time %t", $time);
+      4 error: concurrent assertion statements with action blocks are not supported yet
+      4 error: 'llhd.halt' op expects parent op to be one of 'llhd.process, llhd.final'
+      3 error: unsupported system call `$test$plusargs`
+      3 error: unsupported system call `$monitor`
+      3 error: unsupported statement: PatternCase
+      3 error: unsupported statement: DisableFork
+      3 error: unsupported expression: element select into int$[]
+      3 error: unsupported expression: MinTypMax
+      3 error: unsupported expression: ArbitrarySymbol
+      3 error: unsupported definition: interface
+      3 error: unknown module 'sparc_exu_aluor32'
+      3 error: dynamic loop variable is unsupported
+      3 error: duplicate definition of 'memMod' [-Wduplicate-definition]
+      3 error: duplicate definition of 'cpuMod' [-Wduplicate-definition]
+      3 error: 'top_timescale2' is a module definition but is used as a value
+      3 error: 'other2' is a module definition but is used as a value
+      3 error: 'other' is a module definition but is used as a value
+      3 error: 'moore.dyn_extract_ref' op using value defined outside the region
+      3 error: 'llhd.wait' op expects parent op 'llhd.process'
+      3 error: 'llhd.sig.array_slice' op failed to verify that width of result type has to be smaller than or equal to the input type
+      3 error: 'b' cannot be used in an expression
+      2 error: use of undeclared identifier 'clock'
+      2 error: use of undeclared identifier 'clk2'
+      2 error: unsupported type: associative arrays with wildcard index
+      2 error: unsupported type: UntypedType
+      2 error: unsupported system call `name`
+      2 error: unsupported system call `atoi`
+      2 error: unsupported system call `$past`
+      2 error: unsupported system call `$onehot`
+      2 error: unsupported system call `$onehot0`
+      2 error: unsupported statement: WaitFork
+      2 error: unsupported statement: RandCase
+      2 error: unsupported statement: Invalid
+      2 error: unsupported module member: LetDecl
+      2 error: unsupported format specifier `%v`
+      2 error: unsupported format specifier `%u`
+      2 error: unsupported expression: element select into string$[int]
+      2 error: unsupported expression: element select into bp_uce.bp_cache_stat_info_s
+      2 error: unsupported assignment pattern with type '!moore.queue<i32, 0>'
+      2 error: unknown name `dst1_r`
+      2 error: unknown module 'fpu_in2_gt_in1_2b'
+      2 error: unknown module 'fpu_denorm_3to1'
+      2 error: unknown module 'BUFG'
+      2 error: unknown hierarchical name `y.z`
+      2 error: unknown hierarchical name `pass`
+      2 error: unknown hierarchical name `lout`
+      2 error: unknown hierarchical name `i`
+      2 error: redefinition of 'p'
+      2 error: method argument 'x' is of type 'C::T' (aka 'real') which differs from 'T' (aka 'int') given in its prototype
+      2 error: failed to legalize operation 'moore.uarray_cmp'
+      2 error: failed to legalize operation 'moore.logic_to_time'
+      2 error: expression of type '!moore.queue<i32, 0>' cannot be cast to a simple bit vector
+      2 error: expression cannot be formatted as string
+      2 error: duplicate definition of 'm' [-Wduplicate-definition]
+      2 error: could not resolve hierarchical path name 'another_module'
+      2 error: 'top_timescale3' is a module definition but is used as a value
+      2 error: 'top_timescale' is a module definition but is used as a value
+      2 error: 'top_resetall' is a module definition but is used as a value
+      2 error: 'moore.extract_ref' op using value defined outside the region
+      1 error: use of undeclared identifier 'p'
+      1 error: use of undeclared identifier 'f4'
+      1 error: use of undeclared identifier 'f3'
+      1 error: use of undeclared identifier 'f2'
+      1 error: use of undeclared identifier 'f1'
+      1 error: unsupported type: VirtualInterfaceType
+      1 error: unsupported system call `unique`
+      1 error: unsupported system call `unique_index`
+      1 error: unsupported system call `toupper`
+      1 error: unsupported system call `tolower`
+      1 error: unsupported system call `sum`
+      1 error: unsupported system call `num`
+      1 error: unsupported system call `min`
+      1 error: unsupported system call `max`
+      1 error: unsupported system call `find`
+      1 error: unsupported system call `atoreal`
+      1 error: unsupported system call `atooct`
+      1 error: unsupported system call `atohex`
+      1 error: unsupported system call `atobin`
+      1 error: unsupported system call `$typename`
+      1 error: unsupported system call `$system`
+      1 error: unsupported system call `$strobe`
+      1 error: unsupported system call `$size`
+      1 error: unsupported system call `$sampled`
+      1 error: unsupported system call `$rtoi`
+      1 error: unsupported system call `$printtimescale`
+      1 error: unsupported system call `$monitoron`
+      1 error: unsupported system call `$isunknown`
+      1 error: unsupported system call `$dumpflush`
+      1 error: unsupported system call `$countones`
+      1 error: unsupported system call `$changed`
+      1 error: unsupported set membership case statement
+      1 error: unsupported port: `` does not map to an internal symbol or expression
+      1 error: unsupported package member: LetDecl
+      1 error: unsupported module member: NetType
+      1 error: unsupported module member: NetAlias
+      1 error: unsupported module member: CovergroupType
+      1 error: unsupported format specifier `%z`
+      1 error: unsupported expression: range select with non-constant bounds
+      1 error: unsupported expression: element select into string$[byte]
+      1 error: unsupported expression: element select into string$[]
+      1 error: unsupported expression: element select into string$[$]
+      1 error: unsupported expression: element select into real$[]
+      1 error: unsupported expression: element select into real$[$]
+      1 error: unsupported expression: element select into logic[7:0]$[]
+      1 error: unsupported expression: element select into logic[7:0]$[$]
+      1 error: unsupported expression: element select into logic[31:0]$[]
+      1 error: unsupported expression: element select into logic[31:0]$[$]
+      1 error: unsupported expression: element select into int$[int]
+      1 error: unsupported expression: element select into int$[$]
+      1 error: unsupported expression: element select into bit[7:0]$[]
+      1 error: unsupported expression: element select into bit[7:0]$[$]
+      1 error: unsupported expression: TypeReference
+      1 error: unsupported expression: DataType
+      1 error: unsupported conditional expression with pattern
+      1 error: unsupported concurrent assertion kind: Expect
+      1 error: unsupported assignment pattern with type '!moore.queue<i32, 1>'
+      1 error: unsupported assignment pattern with type '!moore.assoc_array<ustruct<{sw: i32, s: string}>, i32>'
+      1 error: unsupported assignment pattern with type '!moore.assoc_array<string, i32>'
+      1 error: unknown name `taaa_d1`
+      1 error: unknown name `r1`
+      1 error: unknown name `parm`
+      1 error: unknown name `parg0`
+      1 error: unknown name `p_real`
+      1 error: unknown name `offset`
+      1 error: unknown name `foo`
+      1 error: unknown name `d`
+      1 error: unknown name `PARM`
+      1 error: unknown name `CLOCK_FREQUENCY`
+      1 error: unknown module 'mod_adder'
+      1 error: unknown module 'fpu_in2_gt_in1_3to1'
+      1 error: unknown module 'fpu_cnt_lead0_lvl3'
+      1 error: unknown module 'PLLE2_ADV'
+      1 error: unknown module 'IBUF'
+      1 error: unknown hierarchical name `v1`
+      1 error: unknown hierarchical name `tmp`
+      1 error: unknown hierarchical name `r`
+      1 error: unknown hierarchical name `passed`
+      1 error: unknown hierarchical name `mailbox_write`
+      1 error: unknown hierarchical name `m`
+      1 error: unknown hierarchical name `errors`
+      1 error: unknown hierarchical name `error`
+      1 error: unknown hierarchical name `data_in_array`
+      1 error: unknown hierarchical name `bar`
+      1 error: unknown hierarchical name `arg`
+      1 error: unknown hierarchical name `FOO`
+      1 error: top-level module 'mymod' has unconnected 'ref' port 'Y'
+      1 error: top-level module 'dtype' has unconnected interface port 'ch'
+      1 error: top-level module 'devA' has unconnected interface port 's'
+      1 error: top-level module 'dev1' has unconnected interface port 'b'
+      1 error: top-level module 'M' has unconnected interface port 'i'
+      1 error: return type 'bit' of virtual method 'funcBase' does not match 'string' declared in its superclass
+      1 error: reference to non-constant variable 'rows' is not allowed in a constant expression
+      1 error: reference to non-constant variable 'cols' is not allowed in a constant expression
+      1 error: redefinition of 'x'
+      1 error: redefinition of 'c'
+      1 error: recursive function call cannot be inlined
+      1 error: no implicit conversion from 'logic signed[31:0]' to 'choice'; explicit conversion exists, are you missing a cast?
+      1 error: match patterns in if conditions not supported
+      1 error: import of 'x' collides with an existing declaration
+      1 error: failed to legalize operation 'moore.time_to_logic'
+      1 error: failed to legalize operation 'moore.builtin.severity'
+      1 error: failed to legalize operation 'moore.builtin.clog2'
+      1 error: failed to legalize operation 'moore.builtin.bitstoreal'
+      1 error: expression of type '!moore.f32' cannot be cast to a simple bit vector
+      1 error: duplicate definition of 'subsystem2' [-Wduplicate-definition]
+      1 error: duplicate definition of 'subsystem1' [-Wduplicate-definition]
+      1 error: duplicate definition of 'simple_bus' [-Wduplicate-definition]
+      1 error: duplicate definition of 'another_module' [-Wduplicate-definition]
+      1 error: duplicate definition of 'a' [-Wduplicate-definition]
+      1 error: defparam target resolves differently post-elaboration; see 'm.n.p' vs 'm.n.m.n.p'
+      1 error: could not resolve hierarchical path name 'mod0'
+      1 error: could not resolve hierarchical path name 'Test'
+      1 error: checker ports with an explicit direction declared must also declare a type
+      1 error: cannot extend or implement an incomplete forward typedef
+      1 error: always procedures are not allowed in checkers (use always_comb, always_latch, or always_ff)
+      1 error: Failed to convert Display Message!
+      1 error: 'veer-eh1_wrapper' is not a valid top-level module
+      1 error: 'othertop' is a module definition but is used as a value
+      1 error: 'moore.xor' op requires the same type for all operands and results
+      1 error: 'moore.nonblocking_assign' op using value defined outside the region
+      1 error: 'moore.mul' op requires the same type for all operands and results
+      1 error: 'moore.detect_event' op operand #0 must be unpacked type, but got '!ltl.sequence'
+      1 error: 'moore.case_eq' op operand #0 must be simple bit vector type, but got '!moore.f64'
+      1 error: 'm' is not a valid top-level module
+      1 error: 'func.call' op operand type mismatch: expected operand type '!moore.ref<l32>', but provided '!moore.ref<l1>' for operand number 0
+      1 error: 'func.call' op operand type mismatch: expected operand type '!moore.ref<l1>', but provided '!moore.ref<l32>' for operand number 0
+      1 error: 'func.call' op operand type mismatch: expected operand type '!moore.f64', but provided '!moore.time' for operand number 0
+      1 error: 'M1' is not a valid top-level module
+      1 error: 'M' is not a valid top-level module
