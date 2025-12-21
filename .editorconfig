@@ -7,3 +7,6 @@ indent_size = 2
 
 [.gitmodules]
 indent_size = 4
+
+[*.py]
+indent_size = 4
