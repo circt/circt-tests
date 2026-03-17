@@ -1,0 +1,373 @@
+    127 error: unsupported expression: EmptyArgument
+    100 error: unsupported module member: PrimitiveInstance
+     49 error: unsupported system call `$monitor`
+     44 error: unsupported statement: ProceduralAssign
+     43 error: unsupported construct in ClassType members: ConstraintBlock
+     36 error: unsupported module member: InstanceArray
+     35 error: unsupported system call `$fopen`
+     29 error: unsupported statement: Disable
+     29 error: unknown module 'fpu_cnt_lead0_lvl1'
+     26 error: unsupported construct: Primitive
+     22 error: unsupported module member: ClockingBlock
+     19 error: expression of type '!moore.string' cannot be cast to a simple bit vector
+     18 error: unsupported module member: SpecifyBlock
+     18 error: unknown module 'fpu_denorm_3b'
+     17 error: unknown module 'fpu_in2_gt_in1_3b'
+     15 error: 'moore.read' op using value defined outside the region
+     13 error: unsupported assignment pattern with type '!moore.open_uarray<i32>'
+     12 error: unsupported system call `$timeformat`
+     12 error: unsupported statement: RandSequence
+     12 error: unsupported construct: Checker
+     12 error: failed to legalize operation 'moore.wait_level': "moore.wait_level"() ({...}) : () -> ()
+     12 error: failed to legalize operation 'moore.fork': "moore.fork"() <{kind = 0 : i32}> ({...}, {...}) : () -> ()
+     11 error: top-level module 'memMod' has unconnected interface port 'a'
+     10 error: unknown module 'fpu_cnt_lead0_lvl2'
+     10 error: dynamic loop variable is unsupported
+      9 error: unsupported expression: ArbitrarySymbol
+      9 error: redefinition of 'a'
+      8 error: unsupported system call `next`
+      8 error: unsupported system call `$sscanf`
+      8 error: concurrent assertion statements with action blocks are not supported yet
+      8 error: 'llhd.sig.extract' op failed to verify that width of result type has to be smaller than or equal to the input type
+      7 error: unsupported system call `randomize`
+      7 error: top-level module 'dut' has unconnected interface port 'in'
+      7 error: redefinition of 'b'
+      7 error: duplicate definition of 'top' [-Wduplicate-definition]
+      7 error: 'llhd.halt' op expects parent op to be one of 'llhd.process, llhd.final'
+      6 error: unsupported system call `$itor`
+      6 error: unsupported non-blocking assignment timing control: SignalEvent
+      6 error: unsupported expression: array `new` with initializer
+      6 error: failed to legalize operation 'moore.variable': %6 = "moore.variable"() <{name = "map"}> : () -> !moore.ref<assoc_array<i32, string>>
+      6 error: 'moore.case_eq' op operand #0 must be simple bit vector type, but got '!moore.f64'
+      5 error: unsupported system call `prev`
+      5 error: unsupported system call `$dumpfile`
+      5 error: unsupported repeated event control
+      5 error: unsupported format specifier `%c`
+      5 error: unsupported expression: TaggedUnion
+      5 error: unsupported expression: MinTypMax
+      5 error: unsupported expression: CopyClass
+      5 error: too many errors emitted, stopping now [--error-limit=]
+      5 error: failed to legalize operation 'moore.vtable': "moore.vtable"() <{sym_name = @myclass::@vtable}> ({...}) : () -> ()
+      5 error: failed to legalize operation 'moore.fork': "moore.fork"() <{kind = 0 : i32}> ({...}, {...}, {...}) : () -> ()
+      5 error: cannot materialize captured ref at call site; non-symbol source: moore.variable
+      4 error: unsupported system call `$strobe`
+      4 error: unsupported system call `$readmemb`
+      4 error: unsupported format specifier `%L`
+      4 error: unknown hierarchical name `x`
+      4 error: integer bitwidth is limited to 16777215 bits
+      4 error: failed to legalize operation 'moore.fork': "moore.fork"() <{kind = 2 : i32}> ({...}, {...}) : () -> ()
+      4 error: failed to legalize operation 'moore.builtin.random': %72 = "moore.builtin.random"() : () -> !moore.i32
+      4 error: 'llhd.wait' op expects parent op 'llhd.process'
+      3 error: unsupported type: associative arrays with wildcard index
+      3 error: unsupported system call `substr`
+      3 error: unsupported system call `$test$plusargs`
+      3 error: unsupported system call `$size`
+      3 error: unsupported system call `$rtoi`
+      3 error: unsupported system call `$fstrobe`
+      3 error: unsupported system call `$fdisplay`
+      3 error: unsupported statement: PatternCase
+      3 error: unsupported statement: DisableFork
+      3 error: unsupported format specifier `%v`
+      3 error: unknown property `i`
+      3 error: unknown module 'sparc_exu_aluor32'
+      3 error: string index assignment not supported
+      3 error: operand #0 does not dominate this use
+      3 error: failed to legalize operation 'moore.vtable.load_method': %9 = "moore.vtable.load_method"(%8) <{methodSym = @hello}> : (!moore.class<@"class_tb::Hello">) -> ((!moore.class<@"class_tb::Hello">) -> ())
+      3 error: failed to legalize operation 'moore.fork': "moore.fork"() <{kind = 0 : i32}> ({...}) : () -> ()
+      3 error: failed to legalize operation 'moore.fmt.string': %6 = "moore.fmt.string"(%5) : (!moore.string) -> !moore.format_string
+      3 error: failed to legalize operation 'moore.fmt.string': %15 = "moore.fmt.string"(%14) : (!moore.string) -> !moore.format_string
+      3 error: expression of type '!moore.open_uarray<i8>' cannot be cast to a simple bit vector
+      3 error: duplicate definition of 'memMod' [-Wduplicate-definition]
+      3 error: duplicate definition of 'cpuMod' [-Wduplicate-definition]
+      3 error: 'top_timescale2' is a module definition but is used as a value
+      3 error: 'other2' is a module definition but is used as a value
+      3 error: 'other' is a module definition but is used as a value
+      3 error: 'b' cannot be used in an expression
+      2 error: use of undeclared identifier 'clock'
+      2 error: use of undeclared identifier 'clk2'
+      2 error: unsupported type: UntypedType
+      2 error: unsupported system call `sum`
+      2 error: unsupported system call `name`
+      2 error: unsupported system call `itoa`
+      2 error: unsupported system call `atoi`
+      2 error: unsupported system call `$q_initialize`
+      2 error: unsupported system call `$onehot`
+      2 error: unsupported system call `$onehot0`
+      2 error: unsupported system call `$countbits`
+      2 error: unsupported statement: RandCase
+      2 error: unsupported statement: Invalid
+      2 error: unsupported module member: LetDecl
+      2 error: unsupported format specifier `%u`
+      2 error: unsupported expression: element select into bp_uce.bp_cache_stat_info_s
+      2 error: unsupported construct: NetType
+      2 error: unsupported assignment pattern with type '!moore.queue<i32, 0>'
+      2 error: unknown name `out`
+      2 error: unknown module 'fpu_in2_gt_in1_2b'
+      2 error: unknown module 'fpu_denorm_3to1'
+      2 error: unknown module 'BUFG'
+      2 error: unknown hierarchical name `y.z`
+      2 error: unknown hierarchical name `toplevel_event`
+      2 error: unknown hierarchical name `tmp`
+      2 error: unknown hierarchical name `pass`
+      2 error: unknown hierarchical name `lout`
+      2 error: unknown hierarchical name `i`
+      2 error: receiver class @"class_tb::Hello" is not the same as, or derived from, expected base class "class_tb::ihello"
+      2 error: method argument 'x' is of type 'C::T' (aka 'real') which differs from 'T' (aka 'int') given in its prototype
+      2 error: failed to legalize operation 'moore.vtable': "moore.vtable"() <{sym_name = @"test_pkg::uvm_object"::@vtable}> ({...}) : () -> ()
+      2 error: failed to legalize operation 'moore.variable': %4 = "moore.variable"() <{name = "r"}> : () -> !moore.ref<uarray<2 x f64>>
+      2 error: failed to legalize operation 'moore.variable': %35 = "moore.variable"() <{name = "run_time"}> : () -> !moore.ref<uarray<8 x time>>
+      2 error: failed to legalize operation 'moore.variable': %10 = "moore.variable"() <{name = "arr"}> : () -> !moore.ref<assoc_array<i32, i32>>
+      2 error: failed to legalize operation 'moore.string_to_int': %21 = "moore.string_to_int"(%20) : (!moore.string) -> !moore.i32
+      2 error: failed to legalize operation 'moore.fstring_to_string': %63 = "moore.fstring_to_string"(%62) : (!moore.format_string) -> !moore.string
+      2 error: failed to legalize operation 'moore.fstring_to_string': %32 = "moore.fstring_to_string"(%31) : (!moore.format_string) -> !moore.string
+      2 error: failed to legalize operation 'moore.fstring_to_string': %26 = "moore.fstring_to_string"(%25) : (!moore.format_string) -> !moore.string
+      2 error: failed to legalize operation 'moore.fork': "moore.fork"() <{kind = 2 : i32}> ({...}, {...}, {...}) : () -> ()
+      2 error: failed to legalize operation 'moore.fork': "moore.fork"() <{kind = 1 : i32}> ({...}, {...}, {...}) : () -> ()
+      2 error: failed to legalize operation 'moore.fmt.string': %48 = "moore.fmt.string"(%47) : (!moore.string) -> !moore.format_string
+      2 error: failed to legalize operation 'moore.fmt.string': %40 = "moore.fmt.string"(%39) : (!moore.string) -> !moore.format_string
+      2 error: failed to legalize operation 'moore.fmt.string': %26 = "moore.fmt.string"(%25) : (!moore.string) -> !moore.format_string
+      2 error: failed to legalize operation 'moore.fmt.string': %21 = "moore.fmt.string"(%20) : (!moore.string) -> !moore.format_string
+      2 error: failed to legalize operation 'moore.fmt.string': %112 = "moore.fmt.string"(%111) : (!moore.string) -> !moore.format_string
+      2 error: failed to legalize operation 'moore.builtin.random': %22 = "moore.builtin.random"() : () -> !moore.i32
+      2 error: failed to legalize operation 'moore.builtin.random': %103 = "moore.builtin.random"() : () -> !moore.i32
+      2 error: duplicate definition of 'p' [-Wduplicate-definition]
+      2 error: duplicate definition of 'm' [-Wduplicate-definition]
+      2 error: could not resolve hierarchical path name 'another_module'
+      2 error: Expected subroutine called by new to use an implicit this reference
+      2 error: 'top_timescale3' is a module definition but is used as a value
+      2 error: 'top_timescale' is a module definition but is used as a value
+      2 error: 'top_resetall' is a module definition but is used as a value
+      2 error: 'moore.class.property_ref' op result element type ('!moore.i32') does not match field type ('!moore.i8')
+      2 error: 'moore.and' op requires the same type for all operands and results
+      1 error: use of undeclared identifier 'p'
+      1 error: use of undeclared identifier 'f4'
+      1 error: use of undeclared identifier 'f3'
+      1 error: use of undeclared identifier 'f2'
+      1 error: use of undeclared identifier 'f1'
+      1 error: unsupported type: VirtualInterfaceType
+      1 error: unsupported type: CovergroupType
+      1 error: unsupported system call `xor`
+      1 error: unsupported system call `unique`
+      1 error: unsupported system call `unique_index`
+      1 error: unsupported system call `sort`
+      1 error: unsupported system call `shuffle`
+      1 error: unsupported system call `rsort`
+      1 error: unsupported system call `realtoa`
+      1 error: unsupported system call `putc`
+      1 error: unsupported system call `product`
+      1 error: unsupported system call `or`
+      1 error: unsupported system call `octtoa`
+      1 error: unsupported system call `min`
+      1 error: unsupported system call `max`
+      1 error: unsupported system call `icompare`
+      1 error: unsupported system call `hextoa`
+      1 error: unsupported system call `find`
+      1 error: unsupported system call `compare`
+      1 error: unsupported system call `bintoa`
+      1 error: unsupported system call `atoreal`
+      1 error: unsupported system call `atooct`
+      1 error: unsupported system call `atohex`
+      1 error: unsupported system call `atobin`
+      1 error: unsupported system call `and`
+      1 error: unsupported system call `$system`
+      1 error: unsupported system call `$strobeb`
+      1 error: unsupported system call `$readmemh`
+      1 error: unsupported system call `$printtimescale`
+      1 error: unsupported system call `$pow`
+      1 error: unsupported system call `$monitoron`
+      1 error: unsupported system call `$left`
+      1 error: unsupported system call `$isunknown`
+      1 error: unsupported system call `$fwrite`
+      1 error: unsupported system call `$dumpflush`
+      1 error: unsupported system call `$dist_uniform`
+      1 error: unsupported system call `$dist_normal`
+      1 error: unsupported system call `$dist_erlang`
+      1 error: unsupported system call `$countones`
+      1 error: unsupported set membership case statement
+      1 error: unsupported port: `` does not map to an internal symbol or expression
+      1 error: unsupported package member: LetDecl
+      1 error: unsupported non-blocking assignment timing control: EventList
+      1 error: unsupported module member: NetType
+      1 error: unsupported module member: NetAlias
+      1 error: unsupported module member: CovergroupType
+      1 error: unsupported format specifier `%z`
+      1 error: unsupported expression: range select with non-constant bounds
+      1 error: unsupported expression: TypeReference
+      1 error: unsupported expression: DisableIff
+      1 error: unsupported conditional expression with pattern
+      1 error: unsupported concurrent assertion kind: Expect
+      1 error: unsupported assignment pattern with type '!moore.queue<string, 2>'
+      1 error: unsupported assignment pattern with type '!moore.queue<i32, 2>'
+      1 error: unsupported assignment pattern with type '!moore.queue<i32, 1>'
+      1 error: unsupported assignment pattern with type '!moore.queue<f64, 2>'
+      1 error: unsupported assignment pattern with type '!moore.queue<array<8 x l5>, 2>'
+      1 error: unsupported assignment pattern with type '!moore.queue<array<8 x l5>, 0>'
+      1 error: unsupported assignment pattern with type '!moore.assoc_array<ustruct<{sw: i32, s: string}>, i32>'
+      1 error: unsupported assignment pattern with type '!moore.assoc_array<string, i32>'
+      1 error: unknown property `y`
+      1 error: unknown property `s`
+      1 error: unknown property `int_incr`
+      1 error: unknown name `shared`
+      1 error: unknown module 'mod_adder'
+      1 error: unknown module 'fpu_in2_gt_in1_3to1'
+      1 error: unknown module 'fpu_cnt_lead0_lvl3'
+      1 error: unknown module 'PLLE2_ADV'
+      1 error: unknown module 'IBUF'
+      1 error: unknown hierarchical name `v1`
+      1 error: unknown hierarchical name `r`
+      1 error: unknown hierarchical name `passed`
+      1 error: unknown hierarchical name `mhpmcounter`
+      1 error: unknown hierarchical name `mailbox_write`
+      1 error: unknown hierarchical name `m`
+      1 error: unknown hierarchical name `errors`
+      1 error: unknown hierarchical name `error`
+      1 error: unknown hierarchical name `debugRegister`
+      1 error: unknown hierarchical name `data_in_array`
+      1 error: unknown hierarchical name `bar`
+      1 error: unknown hierarchical name `arg`
+      1 error: unknown hierarchical name `FOO`
+      1 error: unknown hierarchical name `A`
+      1 error: top-level module 'mymod' has unconnected 'ref' port 'Y'
+      1 error: top-level module 'dtype' has unconnected interface port 'ch'
+      1 error: top-level module 'devA' has unconnected interface port 's'
+      1 error: top-level module 'dev1' has unconnected interface port 'b'
+      1 error: top-level module 'M' has unconnected interface port 'i'
+      1 error: return type 'bit' of virtual method 'funcBase' does not match 'string' declared in its superclass
+      1 error: reference to non-constant variable 'rows' is not allowed in a constant expression
+      1 error: reference to non-constant variable 'cols' is not allowed in a constant expression
+      1 error: redefinition of 'x'
+      1 error: redefinition of 'c'
+      1 error: recursive function call cannot be inlined
+      1 error: no implicit conversion from 'logic signed[31:0]' to 'choice'; explicit conversion exists, are you missing a cast?
+      1 error: match patterns in if conditions not supported
+      1 error: import of 'x' collides with an existing declaration
+      1 error: failed to legalize operation 'moore.vtable.load_method': %9 = "moore.vtable.load_method"(%8) <{methodSym = @print}> : (!moore.class<@"class_tb::test_cls">) -> ((!moore.class<@"class_tb::test_cls">) -> ())
+      1 error: failed to legalize operation 'moore.vtable.load_method': %16 = "moore.vtable.load_method"(%15) <{methodSym = @print}> : (!moore.class<@"class_tb::test_cls">) -> ((!moore.class<@"class_tb::test_cls">) -> ())
+      1 error: failed to legalize operation 'moore.vtable.load_method': %14 = "moore.vtable.load_method"(%13) <{methodSym = @hello}> : (!moore.class<@"class_tb::Hello">) -> ((!moore.class<@"class_tb::Hello">) -> ())
+      1 error: failed to legalize operation 'moore.vtable.load_method': %11 = "moore.vtable.load_method"(%10) <{methodSym = @hello}> : (!moore.class<@"class_tb::Hello">) -> ((!moore.class<@"class_tb::Hello">, !moore.i32) -> ())
+      1 error: failed to legalize operation 'moore.vtable.load_method': %10 = "moore.vtable.load_method"(%8) <{methodSym = @hello}> : (!moore.class<@"class_tb::helloworld">) -> ((!moore.class<@"class_tb::vhello">) -> ())
+      1 error: failed to legalize operation 'moore.variable': %8 = "moore.variable"() <{name = "rvar"}> : () -> !moore.ref<uarray<2 x time>>
+      1 error: failed to legalize operation 'moore.variable': %8 = "moore.variable"() <{name = "rvar"}> : () -> !moore.ref<uarray<2 x f64>>
+      1 error: failed to legalize operation 'moore.variable': %60 = "moore.variable"() <{name = "r"}> : () -> !moore.ref<uarray<8 x f64>>
+      1 error: failed to legalize operation 'moore.variable': %6 = "moore.variable"() <{name = "words"}> : () -> !moore.ref<assoc_array<string, i32>>
+      1 error: failed to legalize operation 'moore.variable': %6 = "moore.variable"() <{name = "arraya"}> : () -> !moore.ref<assoc_array<string, i32>>
+      1 error: failed to legalize operation 'moore.variable': %43 = "moore.variable"() <{name = "rarr"}> : () -> !moore.ref<uarray<8 x f64>>
+      1 error: failed to legalize operation 'moore.variable': %4 = "moore.variable"() <{name = "arr"}> : () -> !moore.ref<assoc_array<i32, i32>>
+      1 error: failed to legalize operation 'moore.variable': %22 = "moore.variable"() <{name = "array3"}> : () -> !moore.ref<uarray<2 x f64>>
+      1 error: failed to legalize operation 'moore.variable': %21 = "moore.variable"() <{name = "rarr"}> : () -> !moore.ref<uarray<2 x f64>>
+      1 error: failed to legalize operation 'moore.variable': %20 = "moore.variable"() <{name = "array3"}> : () -> !moore.ref<uarray<2 x f64>>
+      1 error: failed to legalize operation 'moore.variable': %2 = "moore.variable"() <{name = "r"}> : () -> !moore.ref<uarray<2 x f64>>
+      1 error: failed to legalize operation 'moore.variable': %2 = "moore.variable"() <{name = "map"}> : () -> !moore.ref<assoc_array<string, i8>>
+      1 error: failed to legalize operation 'moore.variable': %2 = "moore.variable"() <{name = "arr"}> : () -> !moore.ref<assoc_array<i32, i32>>
+      1 error: failed to legalize operation 'moore.variable': %16 = "moore.variable"() <{name = "foo"}> : () -> !moore.ref<uarray<4 x uarray<8 x class<@"main::test_t">>>>
+      1 error: failed to legalize operation 'moore.variable': %14 = "moore.variable"() <{name = "r"}> : () -> !moore.ref<uarray<4 x uarray<2 x f64>>>
+      1 error: failed to legalize operation 'moore.variable': %12 = "moore.variable"() <{name = "array3"}> : () -> !moore.ref<uarray<2 x f64>>
+      1 error: failed to legalize operation 'moore.variable': %0 = "moore.variable"() <{name = "arr"}> : () -> !moore.ref<uarray<3 x class<@"class_tb::base_cls">>>
+      1 error: failed to legalize operation 'moore.uarray_cmp': %128 = "moore.uarray_cmp"(%122, %127) <{predicate = 0 : i64}> : (!moore.uarray<4 x i1>, !moore.uarray<4 x i1>) -> !moore.i1
+      1 error: failed to legalize operation 'moore.uarray_cmp': %118 = "moore.uarray_cmp"(%115, %117) <{predicate = 0 : i64}> : (!moore.uarray<8 x i1>, !moore.uarray<8 x i1>) -> !moore.i1
+      1 error: failed to legalize operation 'moore.string_to_int': %15 = "moore.string_to_int"(%14) : (!moore.string) -> !moore.i56
+      1 error: failed to legalize operation 'moore.string_cmp': %6 = "moore.string_cmp"(<<UNKNOWN SSA VALUE>>, %5) <{predicate = 1 : i64}> : (!moore.string, !moore.string) -> !moore.i1
+      1 error: failed to legalize operation 'moore.string_cmp': %59 = "moore.string_cmp"(%58, %23) <{predicate = 1 : i64}> : (!moore.string, !moore.string) -> !moore.i1
+      1 error: failed to legalize operation 'moore.string_cmp': %48 = "moore.string_cmp"(%47, %31) <{predicate = 0 : i64}> : (!moore.string, !moore.string) -> !moore.i1
+      1 error: failed to legalize operation 'moore.string_cmp': %39 = "moore.string_cmp"(%34, %38) <{predicate = 1 : i64}> : (!moore.string, !moore.string) -> !moore.i1
+      1 error: failed to legalize operation 'moore.string_cmp': %35 = "moore.string_cmp"(%34, %20) <{predicate = 0 : i64}> : (!moore.string, !moore.string) -> !moore.i1
+      1 error: failed to legalize operation 'moore.string_cmp': %19 = "moore.string_cmp"(%14, %18) <{predicate = 0 : i64}> : (!moore.string, !moore.string) -> !moore.i1
+      1 error: failed to legalize operation 'moore.string_cmp': %18 = "moore.string_cmp"(%17, %9) <{predicate = 1 : i64}> : (!moore.string, !moore.string) -> !moore.i1
+      1 error: failed to legalize operation 'moore.string_cmp': %14 = "moore.string_cmp"(%9, %13) <{predicate = 0 : i64}> : (!moore.string, !moore.string) -> !moore.i1
+      1 error: failed to legalize operation 'moore.string.toupper': %8 = "moore.string.toupper"(%7) : (!moore.string) -> !moore.string
+      1 error: failed to legalize operation 'moore.string.tolower': %8 = "moore.string.tolower"(%7) : (!moore.string) -> !moore.string
+      1 error: failed to legalize operation 'moore.null': %5 = "moore.null"() : () -> !moore.null
+      1 error: failed to legalize operation 'moore.null': %24 = "moore.null"() : () -> !moore.null
+      1 error: failed to legalize operation 'moore.null': %16 = "moore.null"() : () -> !moore.null
+      1 error: failed to legalize operation 'moore.fstring_to_string': %60 = "moore.fstring_to_string"(%59) : (!moore.format_string) -> !moore.string
+      1 error: failed to legalize operation 'moore.fstring_to_string': %57 = "moore.fstring_to_string"(%56) : (!moore.format_string) -> !moore.string
+      1 error: failed to legalize operation 'moore.fstring_to_string': %49 = "moore.fstring_to_string"(%48) : (!moore.format_string) -> !moore.string
+      1 error: failed to legalize operation 'moore.fstring_to_string': %48 = "moore.fstring_to_string"(%47) : (!moore.format_string) -> !moore.string
+      1 error: failed to legalize operation 'moore.fstring_to_string': %40 = "moore.fstring_to_string"(%39) : (!moore.format_string) -> !moore.string
+      1 error: failed to legalize operation 'moore.fstring_to_string': %38 = "moore.fstring_to_string"(%37) : (!moore.format_string) -> !moore.string
+      1 error: failed to legalize operation 'moore.fstring_to_string': %36 = "moore.fstring_to_string"(%35) : (!moore.format_string) -> !moore.string
+      1 error: failed to legalize operation 'moore.fstring_to_string': %28 = "moore.fstring_to_string"(%27) : (!moore.format_string) -> !moore.string
+      1 error: failed to legalize operation 'moore.fstring_to_string': %246 = "moore.fstring_to_string"(%245) : (!moore.format_string) -> !moore.string
+      1 error: failed to legalize operation 'moore.fstring_to_string': %23 = "moore.fstring_to_string"(%22) : (!moore.format_string) -> !moore.string
+      1 error: failed to legalize operation 'moore.fstring_to_string': %143 = "moore.fstring_to_string"(%142) : (!moore.format_string) -> !moore.string
+      1 error: failed to legalize operation 'moore.fstring_to_string': %13 = "moore.fstring_to_string"(%12) : (!moore.format_string) -> !moore.string
+      1 error: failed to legalize operation 'moore.fork': "moore.fork"() <{kind = 2 : i32}> ({...}) : () -> ()
+      1 error: failed to legalize operation 'moore.fork': "moore.fork"() <{kind = 1 : i32}> ({...}, {...}) : () -> ()
+      1 error: failed to legalize operation 'moore.fork': "moore.fork"() <{kind = 0 : i32}> ({...}, {...}, {...}, {...}) : () -> ()
+      1 error: failed to legalize operation 'moore.fmt.string': %59 = "moore.fmt.string"(%58) : (!moore.string) -> !moore.format_string
+      1 error: failed to legalize operation 'moore.fmt.string': %50 = "moore.fmt.string"(%49) : (!moore.string) -> !moore.format_string
+      1 error: failed to legalize operation 'moore.fmt.string': %44 = "moore.fmt.string"(%43) : (!moore.string) -> !moore.format_string
+      1 error: failed to legalize operation 'moore.fmt.string': %38 = "moore.fmt.string"(%37) : (!moore.string) -> !moore.format_string
+      1 error: failed to legalize operation 'moore.fmt.string': %37 = "moore.fmt.string"(%33) : (!moore.string) -> !moore.format_string
+      1 error: failed to legalize operation 'moore.fmt.string': %36 = "moore.fmt.string"(%35) : (!moore.string) -> !moore.format_string
+      1 error: failed to legalize operation 'moore.fmt.string': %31 = "moore.fmt.string"(%30) : (!moore.string) -> !moore.format_string
+      1 error: failed to legalize operation 'moore.fmt.string': %30 = "moore.fmt.string"(%29) : (!moore.string) -> !moore.format_string
+      1 error: failed to legalize operation 'moore.fmt.string': %3 = "moore.fmt.string"(%2) : (!moore.string) -> !moore.format_string
+      1 error: failed to legalize operation 'moore.fmt.string': %29 = "moore.fmt.string"(%28) : (!moore.string) -> !moore.format_string
+      1 error: failed to legalize operation 'moore.fmt.string': %28 = "moore.fmt.string"(%27) : (!moore.string) -> !moore.format_string
+      1 error: failed to legalize operation 'moore.fmt.string': %20 = "moore.fmt.string"(%19) : (!moore.string) -> !moore.format_string
+      1 error: failed to legalize operation 'moore.fmt.string': %19 = "moore.fmt.string"(%18) : (!moore.string) -> !moore.format_string
+      1 error: failed to legalize operation 'moore.fmt.string': %16 = "moore.fmt.string"(%15) : (!moore.string) -> !moore.format_string
+      1 error: failed to legalize operation 'moore.fmt.string': %155 = "moore.fmt.string"(%154) : (!moore.string) -> !moore.format_string
+      1 error: failed to legalize operation 'moore.fmt.string': %14 = "moore.fmt.string"(%13) : (!moore.string) -> !moore.format_string
+      1 error: failed to legalize operation 'moore.fmt.string': %12 = "moore.fmt.string"(%11) : (!moore.string) -> !moore.format_string
+      1 error: failed to legalize operation 'moore.fmt.string': %114 = "moore.fmt.string"(%113) : (!moore.string) -> !moore.format_string
+      1 error: failed to legalize operation 'moore.fmt.string': %0 = "moore.fmt.string"(<<UNKNOWN SSA VALUE>>) : (!moore.string) -> !moore.format_string
+      1 error: failed to legalize operation 'moore.dyn_queue_ref_element' that was explicitly marked illegal: %32 = "moore.dyn_queue_ref_element"(%6, %5) : (!moore.ref<queue<i32, 0>>, !moore.i32) -> !moore.ref<i32>
+      1 error: failed to legalize operation 'moore.convert_real': %10 = "moore.convert_real"(%9) : (!moore.f32) -> !moore.f64
+      1 error: failed to legalize operation 'moore.conversion': %5 = "moore.conversion"(%4) : (!moore.ref<l32>) -> !moore.ref<l1>
+      1 error: failed to legalize operation 'moore.conversion': %5 = "moore.conversion"(%4) : (!moore.l1) -> !moore.ref<l1>
+      1 error: failed to legalize operation 'moore.conversion': %192 = "moore.conversion"(%191) : (!moore.f64) -> !moore.array<2 x l8>
+      1 error: failed to legalize operation 'moore.conversion': %182 = "moore.conversion"(%181) : (!moore.f64) -> !moore.struct<{x: l8}>
+      1 error: failed to legalize operation 'moore.conversion': %17 = "moore.conversion"(%16) : (!moore.queue<i32, 0>) -> !moore.queue<array<8 x i4>, 0>
+      1 error: failed to legalize operation 'moore.conversion': %129 = "moore.conversion"(%57) : (!moore.ref<f64>) -> !moore.ref<i8>
+      1 error: failed to legalize operation 'moore.concat_ref': %61 = "moore.concat_ref"(%23) : (!moore.ref<l8>) -> !moore.ref<l8>
+      1 error: failed to legalize operation 'moore.concat_ref': %30 = "moore.concat_ref"(%26, %29) : (!moore.ref<l1>, !moore.ref<l1>) -> !moore.ref<l2>
+      1 error: failed to legalize operation 'moore.concat_ref': %23 = "moore.concat_ref"(%17, %14) : (!moore.ref<l1>, !moore.ref<l4>) -> !moore.ref<l5>
+      1 error: failed to legalize operation 'moore.concat_ref': %22 = "moore.concat_ref"(%14, %18) : (!moore.ref<l1>, !moore.ref<l2>) -> !moore.ref<l3>
+      1 error: failed to legalize operation 'moore.builtin.urandom_range': %66 = "moore.builtin.urandom_range"(%13, %11) : (!moore.i32, !moore.i32) -> !moore.i32
+      1 error: failed to legalize operation 'moore.builtin.urandom_range': %64 = "moore.builtin.urandom_range"(%11, %9) : (!moore.i32, !moore.i32) -> !moore.i32
+      1 error: failed to legalize operation 'moore.builtin.sin': %30 = "moore.builtin.sin"(%29) : (!moore.f64) -> !moore.f64
+      1 error: failed to legalize operation 'moore.builtin.realtobits': %9 = "moore.builtin.realtobits"(%8) : (!moore.f64) -> !moore.i64
+      1 error: failed to legalize operation 'moore.builtin.realtobits': %30 = "moore.builtin.realtobits"(%29) : (!moore.f64) -> !moore.i64
+      1 error: failed to legalize operation 'moore.builtin.random': %63 = "moore.builtin.random"(%62) : (!moore.i32) -> !moore.i32
+      1 error: failed to legalize operation 'moore.builtin.random': %60 = "moore.builtin.random"() : () -> !moore.i32
+      1 error: failed to legalize operation 'moore.builtin.random': %52 = "moore.builtin.random"(%51) : (!moore.i32) -> !moore.i32
+      1 error: failed to legalize operation 'moore.builtin.random': %31 = "moore.builtin.random"(%30) : (!moore.i32) -> !moore.i32
+      1 error: failed to legalize operation 'moore.builtin.random': %244 = "moore.builtin.random"() : () -> !moore.i32
+      1 error: failed to legalize operation 'moore.builtin.random': %19 = "moore.builtin.random"() : () -> !moore.i32
+      1 error: failed to legalize operation 'moore.builtin.random': %16 = "moore.builtin.random"() : () -> !moore.i32
+      1 error: failed to legalize operation 'moore.builtin.random': %132 = "moore.builtin.random"() : () -> !moore.i32
+      1 error: failed to legalize operation 'moore.builtin.random': %118 = "moore.builtin.random"() : () -> !moore.i32
+      1 error: failed to legalize operation 'moore.builtin.random': %0 = "moore.builtin.random"() : () -> !moore.i32
+      1 error: failed to legalize operation 'moore.builtin.clog2': %34 = "moore.builtin.clog2"(%33) : (!moore.l8) -> !moore.l8
+      1 error: failed to legalize operation 'moore.bool_cast': %7082 = "moore.bool_cast"(%7045) : (!moore.time) -> !moore.l1
+      1 error: failed to legalize operation 'moore.bool_cast': %6046 = "moore.bool_cast"(%6045) : (!moore.time) -> !moore.l1
+      1 error: failed to legalize operation 'moore.bool_cast': %43 = "moore.bool_cast"(%29) : (!moore.f64) -> !moore.i1
+      1 error: failed to legalize operation 'moore.bool_cast': %28 = "moore.bool_cast"(%27) : (!moore.f64) -> !moore.i1
+      1 error: failed to legalize operation 'func.call': %22 = "func.call"(%9) <{callee = @f1}> : (!moore.i32) -> !moore.queue<i32, 0>
+      1 error: failed to legalize operation 'func.call': "func.call"(%19) <{callee = @t1}> : (!moore.queue<l32, 0>) -> ()
+      1 error: failed to legalize operation 'arith.select' that was explicitly marked illegal: %38 = "arith.select"(%37, %34, %33) : (i1, !moore.i32, !moore.i32) -> !moore.i32
+      1 error: duplicate definition of 'subsystem2' [-Wduplicate-definition]
+      1 error: duplicate definition of 'subsystem1' [-Wduplicate-definition]
+      1 error: duplicate definition of 'simple_bus' [-Wduplicate-definition]
+      1 error: duplicate definition of 'another_module' [-Wduplicate-definition]
+      1 error: duplicate definition of 'a' [-Wduplicate-definition]
+      1 error: defparam target resolves differently post-elaboration; see 'm.n.p' vs 'm.n.m.n.p'
+      1 error: could not resolve hierarchical path name 'mod0'
+      1 error: could not resolve hierarchical path name 'Test'
+      1 error: checker ports with an explicit direction declared must also declare a type
+      1 error: cannot extend or implement an incomplete forward typedef
+      1 error: always procedures are not allowed in checkers (use always_comb, always_latch, or always_ff)
+      1 error: Queue element reference couldn't be reduced to setting the value at an index: consuming op "func.call"(%32) <{callee = @fun}> : (!moore.ref<i32>) -> () is not supported
+      1 error: Failed to convert Display Message!
+      1 error: Class declaration class_tb::vhello is malformed; some methods are abstract and some are concrete, which is not legal in System Verilog.
+      1 error: 'veer-eh1_wrapper' is not a valid top-level module
+      1 error: 'othertop' is a module definition but is used as a value
+      1 error: 'moore.dyn_extract_ref' op using value defined outside the region
+      1 error: 'moore.detect_event' op operand #0 must be unpacked type, but got '!ltl.sequence'
+      1 error: 'm' is not a valid top-level module
+      1 error: 'llhd.wait' op operand #0 must be variadic of a known primitive element, but got 'f64'
+      1 error: 'hw.param.value' op result #0 must be a known primitive element, but got 'f64'
+      1 error: 'M1' is not a valid top-level module
+      1 error: 'M' is not a valid top-level module
