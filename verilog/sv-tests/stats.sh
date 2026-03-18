@@ -10,10 +10,14 @@ grep -rl "submit a bug report" ext/sv-tests/out/logs \
 | sort -u > results/sv-tests/segfaults.txt
 
 # Collect the runs that had error or warning messages in tests that are not
-# expected to fail.
+# expected to fail. Exclude segfaulting tests since their error output is
+# non-deterministic (depends on thread scheduling during parallel pass
+# execution), which causes flaky error counts between runs.
 grep -Erl " (error|warning): " ext/sv-tests/out/logs \
 | xargs grep -L "should_fail: 1" \
-| sort -u > results/sv-tests/diagnostics.txt
+| sort -u \
+| comm -23 - results/sv-tests/segfaults.txt \
+> results/sv-tests/diagnostics.txt
 
 # Create a ranking of the most common error messages. Legalization failures
 # include an IR dump after the op name which we strip to avoid each instance
