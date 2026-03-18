@@ -196,5 +196,7 @@ jobs:
             echo "Could not resolve SHA to PR, falling back to commit comment"
           fi
 
-          gh api "repos/llvm/circt/commits/$CURRENT_SHA/comments" \
-            -f body="$(cat summary.md)"
+          # Disable commit comments for now.
+          # gh api "repos/llvm/circt/commits/$CURRENT_SHA/comments" \
+          #   -f body="$(cat summary.md)"
+          echo "Skipping commit comments for now"
