@@ -21,6 +21,8 @@ jobs:
   run-tests:
     name: Run Tests
     runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.CIRCT_GITHUB_TOKEN }}
     container:
       image: ghcr.io/circt/images/circt-ci-build:20250515145637
     steps:
@@ -58,7 +60,7 @@ jobs:
       - name: Install dependencies
         run: |
           apt-get update -qq
-          apt install -y cpanminus
+          apt install -y cpanminus gh
           pip3 install --user --break-system-packages termcolor
           echo "$HOME/.local/bin" >> "$GITHUB_PATH"
 
@@ -174,3 +176,25 @@ jobs:
             --run-id "${{ github.run_id }}" \
             | tee summary.md
           cat summary.md >> $GITHUB_STEP_SUMMARY
+
+      # Post the summary as a comment on the CIRCT PR or commit.
+      - name: Post comment on CIRCT
+        if: env.GH_TOKEN != ''
+        run: |
+          CURRENT_SHA=$(git -C circt rev-parse HEAD)
+          KIND="${{ steps.trigger.outputs.kind }}"
+
+          if [ "$KIND" = "pr" ]; then
+            PR_NUMBER=$(gh api "repos/llvm/circt/commits/$CURRENT_SHA/pulls" \
+              --jq '.[0].number' 2>/dev/null || true)
+            if [ -n "$PR_NUMBER" ] && [ "$PR_NUMBER" != "null" ]; then
+              gh api "repos/llvm/circt/issues/$PR_NUMBER/comments" \
+                -f body="$(cat summary.md)"
+              echo "Posted comment on PR #$PR_NUMBER"
+              exit 0
+            fi
+            echo "Could not resolve SHA to PR, falling back to commit comment"
+          fi
+
+          gh api "repos/llvm/circt/commits/$CURRENT_SHA/comments" \
+            -f body="$(cat summary.md)"
