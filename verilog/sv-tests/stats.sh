@@ -15,7 +15,13 @@ grep -Erl " (error|warning): " ext/sv-tests/out/logs \
 | xargs grep -L "should_fail: 1" \
 | sort -u > results/sv-tests/diagnostics.txt
 
-# Create a ranking of the most common error messages.
-cat results/sv-tests/diagnostics.txt \
-| xargs grep -ho "error: .*" \
-| sort | uniq -c | sort -nr > results/sv-tests/errors.txt
+# Create a ranking of the most common error messages. Legalization failures
+# include an IR dump after the op name which we strip to avoid each instance
+# counting as a unique error.
+{
+  cat results/sv-tests/diagnostics.txt \
+  | xargs grep -ho "error: failed to legalize operation '[^']*'" || true
+  cat results/sv-tests/diagnostics.txt \
+  | xargs grep -ho "error: .*" \
+  | grep -v "error: failed to legalize operation " || true
+} | sort | uniq -c | sort -nr > results/sv-tests/errors.txt
