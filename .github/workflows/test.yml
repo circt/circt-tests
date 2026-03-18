@@ -52,12 +52,14 @@ jobs:
           ref: ${{ steps.trigger.outputs.ref }}
           submodules: recursive
           path: circt
+          fetch-depth: 200
 
       # Install dependencies.
       - name: Install dependencies
         run: |
           apt-get update -qq
           apt install -y cpanminus
+          pip3 install --user --break-system-packages termcolor
           echo "$HOME/.local/bin" >> "$GITHUB_PATH"
 
       # Setup ccache to speed up builds.
@@ -124,6 +126,7 @@ jobs:
           path: results-branch
 
       - name: Archive results
+        id: archive
         run: |
           # Copy the results to the target location.
           COMMIT=$(git -C circt rev-parse --short HEAD)
@@ -131,6 +134,7 @@ jobs:
           TARGET="$(date -u +%Y/%Y-%m-%d-%H%M%S)-$KIND-$COMMIT"
           mkdir -p results-branch/$(dirname $TARGET)
           cp -rv results results-branch/$TARGET
+          echo "results=$TARGET" >> $GITHUB_OUTPUT
 
           # Commit the new results.
           cd results-branch
@@ -151,3 +155,22 @@ jobs:
             fi
             git pull --rebase
           done
+
+      # Find the previous baseline result and generate a summary report
+      # comparing error deltas against the current run.
+      - name: Find base commit
+        run: |
+          python3 utils/find-base.py \
+            --circt-repo circt \
+            --results-dir results-branch \
+            | tee base.txt
+
+      - name: Generate summary
+        run: |
+          python3 utils/summarize.py \
+            --current-results "${{ steps.archive.outputs.results }}" \
+            --base-results "$(cat base.txt)" \
+            --results-dir results-branch \
+            --run-id "${{ github.run_id }}" \
+            | tee summary.md
+          cat summary.md >> $GITHUB_STEP_SUMMARY
