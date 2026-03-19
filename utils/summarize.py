@@ -11,6 +11,7 @@ import sys
 
 RESULTS_REPO = "circt/circt-tests"
 SHA_SUFFIX_RE = re.compile(r'.*-([0-9a-f]+)$')
+LOG_PATH_RE = re.compile(r'logs/circt_verilog/(.+)\.log')
 
 
 def code_span(text: str) -> str:
@@ -51,16 +52,16 @@ def build_opening(current: str, base: str | None, run_id: str | None) -> str:
     sha_text = (make_link(current_sha, commit_url(current_sha))
                 if current_sha else "current commit")
 
+    prefix = f"{current_results} of circt-tests {run_text} for {sha_text}"
+
     if base:
         base_sha = extract_sha(base)
         base_results = make_link("results", results_url(base))
         base_sha_text = (make_link(base_sha, commit_url(base_sha))
                          if base_sha else "previous commit")
-        return (f"{current_results} of circt-tests {run_text} for {sha_text}"
-                f" compared to {base_results} for {base_sha_text}:")
+        return f"{prefix} compared to {base_results} for {base_sha_text}:"
     else:
-        return (f"{current_results} of circt-tests {run_text} for {sha_text}."
-                f" No previous results available for comparison.")
+        return f"{prefix}. No previous results available for comparison."
 
 
 def generate_delta_table(current_path: str, base_path: str) -> str | None:
@@ -105,6 +106,42 @@ def generate_delta_table(current_path: str, base_path: str) -> str | None:
     return "\n".join(table_lines)
 
 
+def read_test_names_from_log_paths(log_paths_file: str) -> set[str]:
+    """Read test names from a file containing log file paths.
+
+    Extracts test names using a regex pattern that matches:
+    `logs/circt_verilog/(.+).log`.
+
+    If the pattern matches, uses the capture group as the test name.
+    Otherwise, uses the full path as the test name.
+    """
+    test_names = set()
+
+    with open(log_paths_file, 'r') as f:
+        for log_path in f:
+            # Try to extract test name using regex, or use entire path.
+            match = LOG_PATH_RE.search(log_path)
+            test_names.add(match.group(1) if match else log_path)
+
+    return test_names
+
+
+def generate_segfault_changes(current_path: str,
+                              base_path: str) -> tuple[list[str], list[str]]:
+    """Compare segfaults between base and current, return (fixed, introduced)."""
+    base_segfaults_file = os.path.join(base_path, "sv-tests/segfaults.txt")
+    current_segfaults_file = os.path.join(current_path,
+                                          "sv-tests/segfaults.txt")
+
+    base_segfaults = read_test_names_from_log_paths(base_segfaults_file)
+    current_segfaults = read_test_names_from_log_paths(current_segfaults_file)
+
+    fixed = sorted(base_segfaults - current_segfaults)
+    introduced = sorted(current_segfaults - base_segfaults)
+
+    return fixed, introduced
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(
         description="Generate a markdown summary of test results.")
@@ -115,8 +152,10 @@ def main() -> None:
         "--base-results",
         default="",
         help="Path to the base results directory (empty if none)")
-    parser.add_argument("--results-dir", default=None,
-                        help="Directory prepended to result paths for file access")
+    parser.add_argument(
+        "--results-dir",
+        default=None,
+        help="Directory prepended to result paths for file access")
     parser.add_argument("--run-id", default=None, help="GitHub Actions run ID")
     args = parser.parse_args()
 
@@ -138,10 +177,30 @@ def main() -> None:
     opening = build_opening(current, base, args.run_id)
     sys.stdout.write(opening + "\n")
 
-    if base and base_path:
-        table = generate_delta_table(current_path, base_path)
-        if table:
-            sys.stdout.write(f"\n#### sv-tests\n\n{table}\n")
+    if not base or not base_path:
+        return
+
+    # Add errors delta table.
+    table = generate_delta_table(current_path, base_path)
+    if table:
+        sys.stdout.write(f"\n### sv-tests\n\n{table}\n")
+
+    # Add segfault changes.
+    fixed, introduced = generate_segfault_changes(current_path, base_path)
+
+    if fixed:
+        count = len(fixed)
+        sys.stdout.write(
+            f"\nFixed {count} segfault{'s' if count != 1 else ''}:\n")
+        for test_name in fixed:
+            sys.stdout.write(f"- {code_span(test_name)}\n")
+
+    if introduced:
+        count = len(introduced)
+        sys.stdout.write(
+            f"\nIntroduced {count} segfault{'s' if count != 1 else ''}:\n")
+        for test_name in introduced:
+            sys.stdout.write(f"- {code_span(test_name)}\n")
 
 
 if __name__ == '__main__':
