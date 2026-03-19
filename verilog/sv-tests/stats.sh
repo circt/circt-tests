@@ -29,3 +29,7 @@ grep -Erl " (error|warning): " ext/sv-tests/out/logs \
   | xargs grep -ho "error: .*" \
   | grep -v "error: failed to legalize operation " || true
 } | sort | uniq -c | sort -nr > results/sv-tests/errors.txt
+
+# Collect all test log file paths.
+find ext/sv-tests/out/logs -name "*.log" -type f \
+| sort -u > results/sv-tests/tests.txt
