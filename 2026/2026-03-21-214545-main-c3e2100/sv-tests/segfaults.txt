@@ -1,0 +1,11 @@
+ext/sv-tests/out/logs/circt_verilog/generated/ivtest/regress-sv_packeda_iv.sv.log
+ext/sv-tests/out/logs/circt_verilog/generated/ivtest/regress-sv_sv_darray_function_iv.sv.log
+ext/sv-tests/out/logs/circt_verilog/generated/ivtest/regress-sv_sv_queue_method_signed1_iv.sv.log
+ext/sv-tests/out/logs/circt_verilog/generated/ivtest/regress-sv_sv_queue_method_signed3_iv.sv.log
+ext/sv-tests/out/logs/circt_verilog/generated/ivtest/regress-vlg_lh_memcat3_iv.sv.log
+ext/sv-tests/out/logs/circt_verilog/generated/ivtest/regress-vlg_pr509_iv.sv.log
+ext/sv-tests/out/logs/circt_verilog/generated/ivtest/regress-vlg_select6_iv.sv.log
+ext/sv-tests/out/logs/circt_verilog/generated/ivtest/regress-vlg_select7_iv.sv.log
+ext/sv-tests/out/logs/circt_verilog/generated/ivtest/regress-vlg_select8_iv.sv.log
+ext/sv-tests/out/logs/circt_verilog/generated/ivtest/regress-vlg_undef_lval_select2_iv.sv.log
+ext/sv-tests/out/logs/circt_verilog/generated/yosys/sva_extnets.sv.log
