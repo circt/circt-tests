@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # Generate a markdown summary report comparing current test results against a
 # baseline. Runs diff-counts.py to compute error deltas and formats everything
-# as a markdown table with links to the results, CIRCT commits, and CI run.
+# as a bullet-point list with links to the results, CIRCT commits, and CI run.
 from __future__ import annotations
 import argparse
 import os
@@ -64,8 +64,12 @@ def build_opening(current: str, base: str | None, run_id: str | None) -> str:
         return f"{prefix}. No previous results available for comparison."
 
 
-def generate_delta_table(current_path: str, base_path: str) -> str | None:
-    """Run diff-counts.py and format the output as a markdown table."""
+def generate_delta_list(current_path: str, base_path: str) -> str | None:
+    """Run diff-counts.py and format the output as a bullet-point list.
+
+    The last line from diff-counts.py (total change) is promoted to the
+    first bullet. Returns None if there are no changes.
+    """
     script = os.path.join(os.path.dirname(__file__), "diff-counts.py")
     old_errors = os.path.join(base_path, "sv-tests/errors.txt")
     new_errors = os.path.join(current_path, "sv-tests/errors.txt")
@@ -92,18 +96,23 @@ def generate_delta_table(current_path: str, base_path: str) -> str | None:
     if not rows:
         return None
 
-    # Build markdown table. Bold the last row (total change). Wrap error
+    # The last row is the total change. Only report if individual deltas
+    # exist beyond the total row.
+    individual_rows = rows[:-1]
+    total_row = rows[-1]
+
+    if not individual_rows:
+        return None
+
+    # Build bullet list with the total as the first bullet. Wrap error
     # descriptions in a code span to prevent markdown interpretation of
     # characters like `[`, `]`, `*`, etc.
-    table_lines = ["| Delta | Error |", "|------:|:------|"]
-    for i, (delta, desc) in enumerate(rows):
-        desc = code_span(desc)
-        if i == len(rows) - 1:
-            table_lines.append(f"| **{delta}** | **{desc}** |")
-        else:
-            table_lines.append(f"| {delta} | {desc} |")
+    bullets: list[str] = []
+    bullets.append(f"- **{total_row[0]} {total_row[1]}**")
+    for delta, desc in individual_rows:
+        bullets.append(f"- {delta} {code_span(desc)}")
 
-    return "\n".join(table_lines)
+    return "\n".join(bullets)
 
 
 def read_test_names_from_log_paths(log_paths_file: str) -> set[str]:
@@ -175,18 +184,27 @@ def main() -> None:
         sys.exit(f"error: base results directory does not exist: {base_path}")
 
     opening = build_opening(current, base, args.run_id)
-    sys.stdout.write(opening + "\n")
 
     if not base or not base_path:
+        sys.stdout.write(opening + "\n")
         return
 
-    # Add errors delta table.
-    table = generate_delta_table(current_path, base_path)
-    if table:
-        sys.stdout.write(f"\n### sv-tests\n\n{table}\n")
-
-    # Add segfault changes.
+    # Collect diagnostics delta and segfault changes.
+    delta_list = generate_delta_list(current_path, base_path)
     fixed, introduced = generate_segfault_changes(current_path, base_path)
+    has_changes = delta_list or fixed or introduced
+
+    # If nothing changed, append a short note and stop.
+    if not has_changes:
+        sys.stdout.write(opening + " no change to test results.\n")
+        return
+
+    sys.stdout.write(opening + "\n")
+    sys.stdout.write("\n### sv-tests\n")
+
+    if delta_list:
+        sys.stdout.write(
+            f"\nChanges in emitted diagnostics:\n{delta_list}\n")
 
     if fixed:
         count = len(fixed)
