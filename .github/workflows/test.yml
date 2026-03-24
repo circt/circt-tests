@@ -133,7 +133,7 @@ jobs:
           # Copy the results to the target location.
           COMMIT=$(git -C circt rev-parse --short HEAD)
           KIND="${{ steps.trigger.outputs.kind }}"
-          TARGET="$(date -u +%Y/%Y-%m-%d-%H%M%S)-$KIND-$COMMIT"
+          TARGET="$(date -u +%Y/%m/%Y-%m-%d-%H%M%S)-$KIND-$COMMIT"
           mkdir -p results-branch/$(dirname $TARGET)
           cp -rv results results-branch/$TARGET
           echo "results=$TARGET" >> $GITHUB_OUTPUT
