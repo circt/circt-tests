@@ -17,6 +17,7 @@ on:
       kind: { type: choice, options: [main, pr], required: true }
       sha:  { type: string, required: true }
       repo: { type: string, required: false }
+      pr_number: { type: number, required: false }
 
 jobs:
   run-tests:
@@ -136,6 +137,9 @@ jobs:
           # Copy the results to the target location.
           COMMIT=$(git -C circt rev-parse --short HEAD)
           KIND="${{ steps.trigger.outputs.kind }}"
+          if [ "$KIND" = "pr" ] && [ -n "${{ inputs.pr_number }}" ]; then
+            KIND="pr${{ inputs.pr_number }}"
+          fi
           TARGET="$(date -u +%Y/%m/%Y-%m-%d-%H%M%S)-$KIND-$COMMIT"
           mkdir -p results-branch/$(dirname $TARGET)
           cp -rv results results-branch/$TARGET
@@ -182,16 +186,8 @@ jobs:
 
       # Post the summary as a comment on the CIRCT PR.
       - name: Comment on CIRCT PR
-        if: env.GH_TOKEN != '' && steps.trigger.outputs.kind == 'pr'
+        if: env.GH_TOKEN != '' && inputs.pr_number != ''
         run: |
-          CURRENT_SHA=$(git -C circt rev-parse HEAD)
-          PR_NUMBER=$(gh api "repos/llvm/circt/commits/$CURRENT_SHA/pulls" \
-            --jq '.[0].number' 2>/dev/null || true)
-
-          if [ -n "$PR_NUMBER" ] && [ "$PR_NUMBER" != "null" ]; then
-            gh api "repos/llvm/circt/issues/$PR_NUMBER/comments" \
-              -f body="$(cat summary.md)"
-            echo "Posted comment on PR #$PR_NUMBER"
-          else
-            echo "Could not resolve SHA to PR number, skipping comment"
-          fi
+          gh api "repos/llvm/circt/issues/${{ inputs.pr_number }}/comments" \
+            -f body="$(cat summary.md)"
+          echo "Posted comment on PR #${{ inputs.pr_number }}"
