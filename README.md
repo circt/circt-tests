@@ -3,6 +3,10 @@
 # CIRCT Tests
 
 This repository contains various larger-scale tests for the tools provided by the [CIRCT](https://github.com/llvm/circt) project.
+Tests are run nightly and for every PR or commit to the main branch of CIRCT.
+Test results are stored on a separate [`results`](https://github.com/circt/circt-tests/tree/results) branch.
+
+[![Test](https://github.com/circt/circt-tests/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/circt/circt-tests/actions/workflows/test.yml)
 
 ## Getting Started
 
