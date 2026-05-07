@@ -23,11 +23,20 @@ jobs:
   run-tests:
     name: Run Tests
     runs-on: ubuntu-latest
-    env:
-      GH_TOKEN: ${{ secrets.CIRCT_GITHUB_TOKEN }}
     container:
       image: ghcr.io/circt/images/circt-ci-build:20250515145637
     steps:
+
+      # Generate a token for the circt-bot app to post comments on CIRCT PRs.
+      - name: Generate circt-bot token
+        if: inputs.pr_number != ''
+        id: app-token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ secrets.CIRCT_BOT_APP_ID }}
+          private-key: ${{ secrets.CIRCT_BOT_PRIVATE_KEY }}
+          owner: llvm
+          repositories: circt
 
       # Determine what triggered this build and under which category the results
       # should be archived.
@@ -186,7 +195,9 @@ jobs:
 
       # Post the summary as a comment on the CIRCT PR.
       - name: Comment on CIRCT PR
-        if: env.GH_TOKEN != '' && inputs.pr_number != ''
+        if: inputs.pr_number != ''
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
         run: |
           gh api "repos/llvm/circt/issues/${{ inputs.pr_number }}/comments" \
             -f body="$(cat summary.md)"
