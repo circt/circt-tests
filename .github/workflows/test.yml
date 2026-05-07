@@ -202,3 +202,19 @@ jobs:
           gh api "repos/llvm/circt/issues/${{ inputs.pr_number }}/comments" \
             -f body="$(cat summary.md)"
           echo "Posted comment on PR #${{ inputs.pr_number }}"
+
+  # Auto-merge Dependabot PRs after tests pass
+  auto-merge-dependabot:
+    name: Auto-merge Dependabot PRs
+    runs-on: ubuntu-latest
+    needs: run-tests
+    if: github.event_name == 'pull_request' && github.actor == 'dependabot[bot]'
+    permissions:
+      pull-requests: write
+      contents: write
+    steps:
+      - name: Merge Dependabot PR
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: gh pr merge "$PR_NUMBER" --squash --repo ${{ github.repository }}
