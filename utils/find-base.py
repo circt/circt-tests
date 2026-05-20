@@ -1,18 +1,32 @@
 #!/usr/bin/env python3
 # Find the most recent CIRCT ancestor commit that has results on the results
 # branch. Scans result directories for SHA suffixes, then walks them
-# newest-to-oldest checking if each is an ancestor of HEAD~1 in the CIRCT repo.
+# newest-to-oldest checking if each is an ancestor of the upper bound commit
+# in the CIRCT repo.
+#
+# The upper bound is the merge-base of `HEAD~1` and `origin/main`. For a push
+# to main this degenerates to the previous main commit; for a PR run it is
+# the branch-off point of the PR on main. Either way it excludes the current
+# commit's own freshly archived result and any results that are not reachable
+# from main. If the merge-base cannot be computed (e.g. because the shallow
+# clone does not reach far enough, or `origin/main` is not available), we
+# fall back to using `HEAD~1` directly, which matches the historical
+# behavior.
+#
+# Only result directories from `main` runs are considered; PR result
+# directories (named `...-pr<N>-<sha>`) are skipped so that prior runs on the
+# same PR branch cannot become the baseline.
 from __future__ import annotations
 import argparse
 import os
 import re
 import subprocess
 
-LEAF_RE = re.compile(r'\d{4}-\d{2}-\d{2}-\d{6}-.+-([0-9a-f]+)$')
+LEAF_RE = re.compile(r'\d{4}-\d{2}-\d{2}-\d{6}-main-([0-9a-f]+)$')
 
 
 def find_result_dirs(results_dir: str) -> list[tuple[str, str]]:
-    """Walk the results directory tree for result directories.
+    """Walk the results directory tree for `main`-kind result directories.
 
     Directories whose leaf name matches the result naming pattern are collected
     and not descended into further. Returns (relative_path, sha) tuples sorted
@@ -34,13 +48,30 @@ def find_result_dirs(results_dir: str) -> list[tuple[str, str]]:
     return entries
 
 
-def is_ancestor(circt_repo: str, sha: str) -> bool:
-    """Check if `sha` is an ancestor of HEAD~1 in the CIRCT repo."""
+def resolve_upper_bound(circt_repo: str) -> str:
+    """Resolve the upper-bound commit for the ancestor check.
+
+    Returns the merge-base of `HEAD~1` and `origin/main` if it can be
+    computed, falling back to `HEAD~1` otherwise. Using `HEAD~1` on the left
+    side keeps the current commit's own freshly archived result from being
+    picked as the baseline on main pushes.
+    """
     result = subprocess.run(
-        [
-            "git", "-C", circt_repo, "merge-base", "--is-ancestor", sha,
-            "HEAD~1"
-        ],
+        ["git", "-C", circt_repo, "merge-base", "HEAD~1", "origin/main"],
+        capture_output=True,
+        text=True,
+    )
+    if result.returncode == 0:
+        sha = result.stdout.strip()
+        if sha:
+            return sha
+    return "HEAD~1"
+
+
+def is_ancestor(circt_repo: str, sha: str, upper: str) -> bool:
+    """Check if `sha` is an ancestor of `upper` in the CIRCT repo."""
+    result = subprocess.run(
+        ["git", "-C", circt_repo, "merge-base", "--is-ancestor", sha, upper],
         capture_output=True,
     )
     return result.returncode == 0
@@ -58,8 +89,10 @@ def main() -> None:
                         help="Path to the results branch checkout")
     args = parser.parse_args()
 
+    upper = resolve_upper_bound(args.circt_repo)
+
     for rel_path, sha in find_result_dirs(args.results_dir):
-        if is_ancestor(args.circt_repo, sha):
+        if is_ancestor(args.circt_repo, sha, upper):
             print(rel_path)
             return
 

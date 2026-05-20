@@ -71,6 +71,12 @@ jobs:
           path: circt
           fetch-depth: 200
 
+      # Also fetch the main branch so that `find-base.py` can compute the
+      # merge-base of the current commit with main and use it as the upper
+      # bound when scanning for a baseline result.
+      - name: Fetch CIRCT main branch
+        run: git -C circt fetch --depth=200 origin main
+
       # Install dependencies.
       - name: Install dependencies
         run: |
