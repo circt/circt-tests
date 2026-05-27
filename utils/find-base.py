@@ -4,14 +4,18 @@
 # newest-to-oldest checking if each is an ancestor of the upper bound commit
 # in the CIRCT repo.
 #
-# The upper bound is the merge-base of `HEAD~1` and `origin/main`. For a push
-# to main this degenerates to the previous main commit; for a PR run it is
-# the branch-off point of the PR on main. Either way it excludes the current
-# commit's own freshly archived result and any results that are not reachable
-# from main. If the merge-base cannot be computed (e.g. because the shallow
-# clone does not reach far enough, or `origin/main` is not available), we
-# fall back to using `HEAD~1` directly, which matches the historical
-# behavior.
+# The upper bound is the merge-base of `HEAD~1` and the target main branch
+# (`--main-ref`, default `origin/main`). For a push to main this degenerates
+# to the previous main commit; for a PR run it is the branch-off point of the
+# PR on main. Either way it excludes the current commit's own freshly archived
+# result and any results that are not reachable from main. If the merge-base
+# cannot be computed (e.g. because the shallow clone does not reach far enough,
+# or the main ref is not available), we fall back to using `HEAD~1` directly,
+# which matches the historical behavior.
+#
+# Note: the main ref must point at the *target* branch (`llvm/circt@main`),
+# not the head repository's `main`. For PRs from forks the latter is often
+# stale and would drag the baseline far back in history.
 #
 # Only result directories from `main` runs are considered; PR result
 # directories (named `...-pr<N>-<sha>`) are skipped so that prior runs on the
@@ -48,16 +52,16 @@ def find_result_dirs(results_dir: str) -> list[tuple[str, str]]:
     return entries
 
 
-def resolve_upper_bound(circt_repo: str) -> str:
+def resolve_upper_bound(circt_repo: str, main_ref: str) -> str:
     """Resolve the upper-bound commit for the ancestor check.
 
-    Returns the merge-base of `HEAD~1` and `origin/main` if it can be
-    computed, falling back to `HEAD~1` otherwise. Using `HEAD~1` on the left
-    side keeps the current commit's own freshly archived result from being
-    picked as the baseline on main pushes.
+    Returns the merge-base of `HEAD~1` and `main_ref` if it can be computed,
+    falling back to `HEAD~1` otherwise. Using `HEAD~1` on the left side keeps
+    the current commit's own freshly archived result from being picked as the
+    baseline on main pushes.
     """
     result = subprocess.run(
-        ["git", "-C", circt_repo, "merge-base", "HEAD~1", "origin/main"],
+        ["git", "-C", circt_repo, "merge-base", "HEAD~1", main_ref],
         capture_output=True,
         text=True,
     )
@@ -87,9 +91,14 @@ def main() -> None:
     parser.add_argument("--results-dir",
                         required=True,
                         help="Path to the results branch checkout")
+    parser.add_argument(
+        "--main-ref",
+        default="origin/main",
+        help="Git ref for the target main branch (e.g. `target/main`). Must "
+        "point at the upstream target branch, not a fork's `main`.")
     args = parser.parse_args()
 
-    upper = resolve_upper_bound(args.circt_repo)
+    upper = resolve_upper_bound(args.circt_repo, args.main_ref)
 
     for rel_path, sha in find_result_dirs(args.results_dir):
         if is_ancestor(args.circt_repo, sha, upper):

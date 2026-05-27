@@ -71,11 +71,18 @@ jobs:
           path: circt
           fetch-depth: 200
 
-      # Also fetch the main branch so that `find-base.py` can compute the
-      # merge-base of the current commit with main and use it as the upper
-      # bound when scanning for a baseline result.
-      - name: Fetch CIRCT main branch
-        run: git -C circt fetch --depth=200 origin main
+      # Fetch the *target* (upstream) main branch by URL so that `find-base.py`
+      # can compute the merge-base of the current commit against the real
+      # target branch. We must NOT use the checked-out repo's `origin/main`:
+      # for PRs from forks `origin` is the fork, whose `main` is frequently
+      # stale and would drag the baseline far back in history. For pushes and
+      # scheduled runs `origin` already is `llvm/circt`, so this resolves to the
+      # same commit.
+      - name: Fetch CIRCT target main branch
+        run: |
+          git -C circt fetch --depth=200 \
+            https://github.com/llvm/circt.git \
+            +refs/heads/main:refs/remotes/target/main
 
       # Install dependencies.
       - name: Install dependencies
@@ -190,6 +197,7 @@ jobs:
           python3 utils/find-base.py \
             --circt-repo circt \
             --results-dir results-branch \
+            --main-ref target/main \
             | tee base.txt
 
       - name: Generate summary
