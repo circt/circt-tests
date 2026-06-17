@@ -69,7 +69,7 @@ jobs:
           ref: ${{ steps.trigger.outputs.ref }}
           submodules: recursive
           path: circt
-          fetch-depth: 200
+          fetch-depth: 50
 
       # Fetch the *target* (upstream) main branch by URL so that `find-base.py`
       # can compute the merge-base of the current commit against the real
@@ -80,7 +80,7 @@ jobs:
       # same commit.
       - name: Fetch CIRCT target main branch
         run: |
-          git -C circt fetch --depth=200 \
+          git -C circt fetch --no-tags --no-recurse-submodules --depth=50 \
             https://github.com/llvm/circt.git \
             +refs/heads/main:refs/remotes/target/main
 
