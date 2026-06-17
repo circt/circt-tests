@@ -89,6 +89,7 @@ jobs:
         run: |
           apt-get update -qq
           apt install -y cpanminus gh
+          pip3 install --user --break-system-packages "cmake>=3.28"
           pip3 install --user --break-system-packages termcolor
           echo "$HOME/.local/bin" >> "$GITHUB_PATH"
 
