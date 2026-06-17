@@ -66,6 +66,7 @@ Then use `verilog/sv-tests/run.sh` to run the entire test suite and generate the
 - `results/sv-tests/segfaults.txt` contains a list of runs that crashed circt-verilog with a stack trace.
 - `results/sv-tests/diagnostics.txt` contains a list of runs that produced errors or warnings.
 - `results/sv-tests/errors.txt` contains a list of all errors, ranked from most to least common.
+- `results/sv-tests/errors-source.txt` contains the same errors as `errors.txt`, each followed by the list of tests that produce it.
 
 Use the `utils/diff-counts.py` script to get a delta between an old and a new `errors.txt` file.
 The list of errors is an excellent starting point if you want to contribute to circt-verilog and are looking for the most impactful issues to fix.

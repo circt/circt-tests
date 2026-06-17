@@ -33,3 +33,28 @@ grep -Erl " (error|warning): " ext/sv-tests/out/logs \
 # Collect all test log file paths.
 find ext/sv-tests/out/logs -name "*.log" -type f \
 | sort -u > results/sv-tests/tests.txt
+
+# Map each error to the tests that produce it.
+awk -F'\t' '
+  NR == FNR {
+    src[$1] = src[$1] sprintf("    %s\n", $2)
+    next
+  }
+  {
+    msg = $0
+    sub(/^ *[0-9]+ /, "", msg)
+    if (src[msg])
+      printf "%s\n%s", $0, src[msg]
+    else
+      print $0
+  }
+' <(
+  {
+    cat results/sv-tests/diagnostics.txt \
+    | xargs grep -Ho "error: failed to legalize operation '[^']*'" || true
+    cat results/sv-tests/diagnostics.txt \
+    | xargs grep -Ho "error: .*" \
+    | grep -v "error: failed to legalize operation " || true
+  } | awk '{n=index($0, ":"); print substr($0, n+1) "\t" substr($0, 1, n-1)}' \
+    | sort -u
+) results/sv-tests/errors.txt > results/sv-tests/errors-source.txt
