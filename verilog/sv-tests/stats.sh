@@ -13,7 +13,7 @@ grep -rl "submit a bug report" ext/sv-tests/out/logs \
 # expected to fail. Exclude segfaulting tests since their error output is
 # non-deterministic (depends on thread scheduling during parallel pass
 # execution), which causes flaky error counts between runs.
-grep -Erl " (error|warning): " ext/sv-tests/out/logs \
+grep -Erl "^[^[:space:]].* (error|warning): " ext/sv-tests/out/logs \
 | xargs grep -L "should_fail: 1" \
 | sort -u \
 | comm -23 - results/sv-tests/segfaults.txt \
@@ -24,11 +24,12 @@ grep -Erl " (error|warning): " ext/sv-tests/out/logs \
 # counting as a unique error.
 {
   cat results/sv-tests/diagnostics.txt \
-  | xargs grep -ho "error: failed to legalize operation '[^']*'" || true
+  | xargs grep -ho "^[^[:space:]].*error: failed to legalize operation '[^']*'" || true
   cat results/sv-tests/diagnostics.txt \
-  | xargs grep -ho "error: .*" \
+  | xargs grep -ho "^[^[:space:]].*error: .*" \
   | grep -v "error: failed to legalize operation " || true
-} | sort | uniq -c | sort -nr > results/sv-tests/errors.txt
+} | sed -E 's/^.*error: /error: /' \
+  | sort | uniq -c | sort -nr > results/sv-tests/errors.txt
 
 # Collect all test log file paths.
 find ext/sv-tests/out/logs -name "*.log" -type f \
@@ -51,10 +52,16 @@ awk -F'\t' '
 ' <(
   {
     cat results/sv-tests/diagnostics.txt \
-    | xargs grep -Ho "error: failed to legalize operation '[^']*'" || true
+    | xargs grep -Ho "^[^[:space:]].*error: failed to legalize operation '[^']*'" || true
     cat results/sv-tests/diagnostics.txt \
-    | xargs grep -Ho "error: .*" \
+    | xargs grep -Ho "^[^[:space:]].*error: .*" \
     | grep -v "error: failed to legalize operation " || true
-  } | awk '{n=index($0, ":"); print substr($0, n+1) "\t" substr($0, 1, n-1)}' \
+  } | awk '{
+      n=index($0, ":")
+      file = substr($0, 1, n-1)
+      rest = substr($0, n+1)
+      m = index(rest, "error: ")
+      print substr(rest, m) "\t" file
+    }' \
     | sort -u
 ) results/sv-tests/errors.txt > results/sv-tests/errors-source.txt
