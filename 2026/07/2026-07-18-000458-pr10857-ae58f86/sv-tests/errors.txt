@@ -1,0 +1,208 @@
+    180 error: unsupported construct in ClassType members: ConstraintBlock
+     60 error: unsupported statement: ProceduralAssign
+     38 error: failed to legalize operation 'moore.fork'
+     33 error: unsupported statement: Disable
+     33 error: failed to legalize operation 'moore.variable'
+     23 error: unsupported construct: Primitive
+     19 error: unsupported system call `$sdf_annotate`
+     19 error: unsupported module member: SpecifyBlock
+     17 error: failed to legalize operation 'moore.class.new'
+     17 error: class struct has member types with no data layout
+     12 error: unsupported statement: RandSequence
+     12 error: failed to legalize operation 'moore.wait_level'
+      9 error: unsupported primitive `nmos`
+      8 error: unsupported system call `next`
+      8 error: unsupported instance of primitive `tran`
+      8 error: unsupported expression: array `new` with initializer
+      8 error: primitive instances with explicit drive strengths are not supported.
+      8 error: failed to legalize operation 'moore.vtable.load_method'
+      8 error: 'llhd.sig.extract' op failed to verify that width of result type has to be smaller than or equal to the input type
+      7 error: unsupported delay with rise/fall/turn-off
+      7 error: identifier 'analysis_txn' used before its declaration
+      6 error: unsupported system call `randomize`
+      6 error: unsupported system call `$dumpfile`
+      6 error: unsupported primitive `bufif1`
+      6 error: unsupported primitive `bufif0`
+      6 error: unsupported non-blocking assignment timing control: SignalEvent
+      6 error: failed to legalize operation 'moore.vtable'
+      6 error: failed to legalize operation 'moore.scan.begin_sscanf'
+      6 error: failed to legalize operation 'moore.scan.begin_fscanf'
+      6 error: failed to legalize operation 'moore.conversion'
+      6 error: could not resolve hierarchical path name 'sml_const'
+      6 error: could not resolve hierarchical path name 'med_const'
+      5 error: unsupported system call `prev`
+      5 error: unsupported system call `$strobe`
+      5 error: unsupported repeated event control
+      5 error: unsupported format specifier `%u`
+      5 error: unsupported expression: TaggedUnion
+      5 error: unsupported expression: MinTypMax
+      5 error: unsupported expression: CopyClass
+      5 error: failed to legalize operation 'moore.concat_ref'
+      4 error: unsupported primitive `rnmos`
+      4 error: unsupported instance of primitive `tranif1`
+      4 error: unsupported assignment pattern with type '!moore.queue<i32, 0>'
+      4 error: recursive function call cannot be inlined
+      4 error: failed to legalize operation 'moore.null'
+      4 error: 'func.return' op has 0 operands, but enclosing function (@self) returns 1
+      3 error: virtual method 'sample' is 'public' but declared 'protected' in superclass method
+      3 error: unsupported type: associative arrays with wildcard index
+      3 error: unsupported system call `$size`
+      3 error: unsupported system call `$fstrobe`
+      3 error: unsupported system call `$fgets`
+      3 error: unsupported statement: PatternCase
+      3 error: unsupported statement: DisableFork
+      3 error: unsupported primitive `pmos`
+      3 error: unknown property `i`
+      3 error: string index assignment not supported
+      3 error: parentheses are required when invoking function 'get_status'
+      3 error: no member named 'sprint' in 'm_uvm_printer_knobs'
+      3 error: expression of type '!moore.open_uarray<i8>' cannot be cast to a simple bit vector
+      3 error: could not resolve hierarchical path name 'sml_var'
+      3 error: could not resolve hierarchical path name 'med_var'
+      3 error: 'other2' is a module definition but is used as a value
+      3 error: 'other' is a module definition but is used as a value
+      3 error: 'moore.vtable_entry' op cannot resolve target symbol to a function operation @"myclass::subtask"
+      3 error: 'moore.builtin.urandom_range' op operand #2 must be ref of 32-bit two-valued integer type, but got '!moore.i32'
+      2 error: unsupported system call `name`
+      2 error: unsupported system call `find`
+      2 error: unsupported system call `$q_initialize`
+      2 error: unsupported system call `$fread`
+      2 error: unsupported system call `$fgetc`
+      2 error: unsupported system call `$countbits`
+      2 error: unsupported statement: RandCase
+      2 error: unsupported primitive `cmos`
+      2 error: unsupported module member: NetType
+      2 error: unsupported instance of primitive `tranif0`
+      2 error: unsupported format specifier `%z`
+      2 error: unsupported expression: range select with non-constant bounds
+      2 error: unsupported expression: SequenceWithMatch
+      2 error: unsupported expression: EmptyArgument
+      2 error: unsupported constructor call without `this` argument
+      2 error: unknown hierarchical name `x`
+      2 error: unknown hierarchical name `error`
+      2 error: receiver class @"class_tb::Hello" is not the same as, or derived from, expected base class "class_tb::ihello"
+      2 error: only n-output primitives that specify a single delay are currently supported.
+      2 error: failed to resolve captured variable `out` at call site
+      2 error: failed to legalize operation 'moore.uarray_cmp'
+      2 error: failed to legalize operation 'moore.string.substr'
+      2 error: failed to legalize operation 'moore.string.itoa'
+      2 error: failed to legalize operation 'moore.string.atoi'
+      2 error: failed to legalize operation 'moore.dyn_queue_ref_element'
+      2 error: failed to legalize operation 'moore.builtin.realtobits'
+      2 error: could not resolve hierarchical path name 'same'
+      2 error: could not resolve hierarchical path name 'max'
+      2 error: could not resolve hierarchical path name 'lrg_const'
+      2 error: 'moore.class.property_ref' op result element type ('!moore.i32') does not match field type ('!moore.i8')
+      2 error: 'moore.assert' op expects parent op 'moore.procedure'
+      2 error: 'func.return' op has 0 operands, but enclosing function (@status) returns 1
+      1 error: use of undeclared identifier 'CONTROL'
+      1 error: unsupported: $readmem into associative array
+      1 error: unsupported type: UntypedType
+      1 error: unsupported system call `xor`
+      1 error: unsupported system call `unique`
+      1 error: unsupported system call `unique_index`
+      1 error: unsupported system call `sum`
+      1 error: unsupported system call `sort`
+      1 error: unsupported system call `shuffle`
+      1 error: unsupported system call `rsort`
+      1 error: unsupported system call `reverse`
+      1 error: unsupported system call `product`
+      1 error: unsupported system call `or`
+      1 error: unsupported system call `min`
+      1 error: unsupported system call `max`
+      1 error: unsupported system call `find_last`
+      1 error: unsupported system call `find_last_index`
+      1 error: unsupported system call `find_index`
+      1 error: unsupported system call `find_first`
+      1 error: unsupported system call `find_first_index`
+      1 error: unsupported system call `and`
+      1 error: unsupported system call `$ungetc`
+      1 error: unsupported system call `$system`
+      1 error: unsupported system call `$strobeb`
+      1 error: unsupported system call `$steady_gclk`
+      1 error: unsupported system call `$stable_gclk`
+      1 error: unsupported system call `$rose_gclk`
+      1 error: unsupported system call `$rising_gclk`
+      1 error: unsupported system call `$past_gclk`
+      1 error: unsupported system call `$left`
+      1 error: unsupported system call `$future_gclk`
+      1 error: unsupported system call `$ftell`
+      1 error: unsupported system call `$fmonitor`
+      1 error: unsupported system call `$ferror`
+      1 error: unsupported system call `$feof`
+      1 error: unsupported system call `$fell_gclk`
+      1 error: unsupported system call `$falling_gclk`
+      1 error: unsupported system call `$dumpports`
+      1 error: unsupported system call `$dumpflush`
+      1 error: unsupported system call `$dist_uniform`
+      1 error: unsupported system call `$dist_t`
+      1 error: unsupported system call `$dist_poisson`
+      1 error: unsupported system call `$dist_normal`
+      1 error: unsupported system call `$dist_exponential`
+      1 error: unsupported system call `$dist_erlang`
+      1 error: unsupported system call `$dist_chi_square`
+      1 error: unsupported system call `$coverage_control`
+      1 error: unsupported system call `$changing_gclk`
+      1 error: unsupported system call `$changed_gclk`
+      1 error: unsupported system call `$bits`
+      1 error: unsupported primitive `rtranif1`
+      1 error: unsupported primitive `rtranif0`
+      1 error: unsupported primitive `rtran`
+      1 error: unsupported primitive `rpmos`
+      1 error: unsupported primitive `notif1`
+      1 error: unsupported primitive `notif0`
+      1 error: unsupported non-blocking assignment timing control: EventList
+      1 error: unsupported expression: element select into hwpf_stride_pkg::hwpf_stride_status_t
+      1 error: unsupported expression: DisableIff
+      1 error: unsupported conditional expression with pattern
+      1 error: unsupported concurrent assertion kind: Expect
+      1 error: unsupported assignment pattern with type '!moore.queue<string, 2>'
+      1 error: unsupported assignment pattern with type '!moore.queue<i32, 2>'
+      1 error: unsupported assignment pattern with type '!moore.queue<i32, 1>'
+      1 error: unsupported assignment pattern with type '!moore.queue<f64, 2>'
+      1 error: unsupported assignment pattern with type '!moore.queue<array<8 x l5>, 2>'
+      1 error: unsupported assignment pattern with type '!moore.queue<array<8 x l5>, 0>'
+      1 error: unsupported assignment pattern with type '!moore.assoc_array<string, i32>'
+      1 error: unknown property `x`
+      1 error: unknown property `s`
+      1 error: unknown property `int_incr`
+      1 error: unknown name `x`
+      1 error: unknown name `shared`
+      1 error: unknown hierarchical name `tmp`
+      1 error: unknown hierarchical name `i`
+      1 error: unknown hierarchical name `errors`
+      1 error: too many errors emitted, stopping now [--error-limit=]
+      1 error: range of selection [31:34] from 'logic[31:0]' is reversed [-Wrange-select-reversed]
+      1 error: match patterns in if conditions not supported
+      1 error: invalid operands to binary expression ('string' and 'bit[7:0]')
+      1 error: invalid operands to binary expression ('string' and 'bit[15:0]')
+      1 error: interface instance `` was not expanded
+      1 error: failed to resolve captured variable `pass` at call site
+      1 error: failed to resolve captured variable `CLK` at call site
+      1 error: failed to legalize operation 'moore.string.toupper'
+      1 error: failed to legalize operation 'moore.string.tolower'
+      1 error: failed to legalize operation 'moore.string.realtoa'
+      1 error: failed to legalize operation 'moore.string.put'
+      1 error: failed to legalize operation 'moore.string.octtoa'
+      1 error: failed to legalize operation 'moore.string.icompare'
+      1 error: failed to legalize operation 'moore.string.hextoa'
+      1 error: failed to legalize operation 'moore.string.compare'
+      1 error: failed to legalize operation 'moore.string.bintoa'
+      1 error: failed to legalize operation 'moore.string.atoreal'
+      1 error: failed to legalize operation 'moore.string.atooct'
+      1 error: failed to legalize operation 'moore.string.atohex'
+      1 error: failed to legalize operation 'moore.string.atobin'
+      1 error: failed to legalize operation 'moore.builtin.sin'
+      1 error: failed to legalize operation 'moore.builtin.clog2'
+      1 error: could not resolve hierarchical path name 'mod0'
+      1 error: could not determine clocking event for `$fell`
+      1 error: `$value$plusargs` format must be a string literal
+      1 error: Queue element reference couldn't be reduced to setting the value at an index: consuming op "moore.call_coroutine"(%32) <{callee = @fun}> : (!moore.ref<i32>) -> () is not supported
+      1 error: Class declaration class_tb::vhello is malformed; some methods are abstract and some are concrete, which is not legal in System Verilog.
+      1 error: 'veer-eh1_wrapper' is not a valid top-level module
+      1 error: 'othertop' is a module definition but is used as a value
+      1 error: 'moore.vtable_entry' op cannot resolve target symbol to a function operation @"test_pkg::uvm_component::run_phase"
+      1 error: 'moore.detect_event' op operand #0 must be unpacked type, but got '!ltl.sequence'
+      1 error: 'moore.blocking_assign' op failed to verify that src and dst types match
+      1 error: 'hw.param.value' op result #0 must be a known primitive element, but got 'f64'
+      1 error: $sscanf requires a string literal format string
