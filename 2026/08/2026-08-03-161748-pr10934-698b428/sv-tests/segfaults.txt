@@ -1,0 +1,7 @@
+ext/sv-tests/out/logs/circt_verilog/generated/ivtest/regress-sv_enum_base_fail_string1_iv.sv.log
+ext/sv-tests/out/logs/circt_verilog/generated/ivtest/regress-vlg_porttest2_iv.sv.log
+ext/sv-tests/out/logs/circt_verilog/generated/ivtest/regress-vlg_pr1907192_iv.sv.log
+ext/sv-tests/out/logs/circt_verilog/generated/keywords/5.6.2--keyword_package.sv.log
+ext/sv-tests/out/logs/circt_verilog/generated/keywords/5.6.2--keyword_primitive.sv.log
+ext/sv-tests/out/logs/circt_verilog/generated/keywords/5.6.2--keyword_program.sv.log
+ext/sv-tests/out/logs/circt_verilog/generated/tnoc/tnoc.sv.log
