@@ -1,0 +1,1 @@
+ext/sv-tests/out/logs/circt_verilog/generated/ivtest/regress-vlg_porttest2_iv.sv.log
