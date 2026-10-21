@@ -19,6 +19,7 @@ utils/update-all.sh
 
 # Verilog frontend tests
 verilog/snitch/compile.sh
+verilog/e203/compile.sh
 verilog/sv-tests/install-deps.sh
 verilog/sv-tests/run.sh
 ```
@@ -55,6 +56,12 @@ This is an amalgamated single-file version of the source code that was used as a
 ### Snitch
 
 The `verilog/snitch/compile.sh` script compiles the Snitch core to the CIRCT core dialects.
+
+### E203
+
+The `verilog/e203/compile.sh` script compiles the [E203] core from the `ext/e203` submodule to MLIR and verifies that only core dialects are used, including LLHD processes.
+
+[E203]: https://github.com/riscv-mcu/e203_hbirdv2
 
 ### sv-tests
 
