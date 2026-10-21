@@ -161,6 +161,8 @@ jobs:
 
       - name: Archive results
         id: archive
+        env:
+          IS_FORK_PR: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.repo.fork }}
         run: |
           # Copy the results to the target location.
           COMMIT=$(git -C circt rev-parse --short HEAD)
@@ -181,6 +183,13 @@ jobs:
             user.name "github-actions[bot]"
           git add .
           git commit -m "Results for $COMMIT"
+
+          # Pull requests from forks have a read-only token. Skip pushing to
+          # the results in this case.
+          if [ "$IS_FORK_PR" = "true" ]; then
+            echo "Skipping push of results; pull request is from a fork"
+            exit 0
+          fi
 
           # Push the results. If the push fails, assume that it's because some
           # other job happened to push in the meantime.
