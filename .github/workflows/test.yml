@@ -132,6 +132,9 @@ jobs:
       - name: Compile Snitch
         run: verilog/snitch/compile.sh
 
+      - name: Compile E203
+        run: verilog/e203/compile.sh
+
       - name: Run sv-tests
         run: |
           verilog/sv-tests/install-deps.sh

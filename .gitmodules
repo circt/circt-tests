@@ -2,3 +2,7 @@
     path = ext/sv-tests
     url = https://github.com/chipsalliance/sv-tests.git
     shallow = true
+[submodule "ext/e203"]
+    path = ext/e203
+    url = https://github.com/riscv-mcu/e203_hbirdv2.git
+    shallow = true

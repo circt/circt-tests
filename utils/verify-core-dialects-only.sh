@@ -11,7 +11,7 @@ fi
 dialects=$( (grep -Eo '\s[a-zA-Z]+\.' "$1" || true) | sort | uniq -c)
 
 # Complain about any non-core dialects.
-accepted="hw|comb|seq|verif|sim|dbg"
+accepted="hw|comb|seq|verif|sim|dbg|llhd|cf"
 if non_core_dialects=$(grep -Ev '\b('"$accepted"')\b' <<< "$dialects"); then
   echo "error: input contains non-core dialect ops:"
   echo "$non_core_dialects"
